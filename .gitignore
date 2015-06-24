@@ -1,0 +1,10 @@
+/build/
+/bin/
+.classpath
+.project
+.settings
+target
+.gradle
+.idea
+bower_components
+node_modules
