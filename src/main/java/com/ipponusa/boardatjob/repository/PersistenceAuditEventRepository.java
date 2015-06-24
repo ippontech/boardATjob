@@ -2,14 +2,14 @@ package com.ipponusa.boardatjob.repository;
 
 import com.ipponusa.boardatjob.domain.PersistentAuditEvent;
 import org.joda.time.LocalDateTime;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 /**
- * Spring Data MongoDB repository for the PersistentAuditEvent entity.
+ * Spring Data JPA repository for the PersistentAuditEvent entity.
  */
-public interface PersistenceAuditEventRepository extends MongoRepository<PersistentAuditEvent, String> {
+public interface PersistenceAuditEventRepository extends JpaRepository<PersistentAuditEvent, String> {
 
     List<PersistentAuditEvent> findByPrincipal(String principal);
 

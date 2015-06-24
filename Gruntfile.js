@@ -2,11 +2,15 @@
 'use strict';
 var fs = require('fs');
 
-// Returns the first occurence of the version number
-var parseVersionFromBuildGradle = function() {
-    var versionRegex = /^version\s*=\s*[',"]([^',"]*)[',"]/gm; // Match and group the version number
-    var buildGradle = fs.readFileSync('build.gradle', "utf8");
-    return versionRegex.exec(buildGradle)[1];
+var parseString = require('xml2js').parseString;
+// Returns the second occurence of the version number
+var parseVersionFromPomXml = function() {
+    var version;
+    var pomXml = fs.readFileSync('pom.xml', "utf8");
+    parseString(pomXml, function (err, result){
+        version = result.project.version[0];
+    });
+    return version;
 };
 
 // usemin custom step
@@ -37,7 +41,7 @@ module.exports = function (grunt) {
                 tasks: ['wiredep']
             },
             ngconstant: {
-                files: ['Gruntfile.js', 'build.gradle'],
+                files: ['Gruntfile.js', 'pom.xml'],
                 tasks: ['ngconstant:dev']
             }
         },
@@ -304,7 +308,7 @@ module.exports = function (grunt) {
                 },
                 constants: {
                     ENV: 'dev',
-                    VERSION: parseVersionFromBuildGradle()
+                    VERSION: parseVersionFromPomXml()
                 }
             },
             prod: {
@@ -313,7 +317,7 @@ module.exports = function (grunt) {
                 },
                 constants: {
                     ENV: 'prod',
-                    VERSION: parseVersionFromBuildGradle()
+                    VERSION: parseVersionFromPomXml()
                 }
             }
         }

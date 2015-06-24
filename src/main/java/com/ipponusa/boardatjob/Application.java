@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
+import com.google.common.base.Joiner;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -67,6 +68,7 @@ public class Application {
         app.setShowBanner(false);
         SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
         addDefaultProfile(app, source);
+        addLiquibaseScanPackages();
         Environment env = app.run(args).getEnvironment();
         log.info("Access URLs:\n----------------------------------------------------------\n\t" +
             "Local: \t\thttp://127.0.0.1:{}\n\t" +
@@ -86,5 +88,18 @@ public class Application {
 
             app.setAdditionalProfiles(Constants.SPRING_PROFILE_DEVELOPMENT);
         }
+    }
+
+    /**
+     * Set the liquibases.scan.packages to avoid an exception from ServiceLocator.
+     */
+    private static void addLiquibaseScanPackages() {
+        System.setProperty("liquibase.scan.packages", Joiner.on(",").join(
+            "liquibase.change", "liquibase.database", "liquibase.parser",
+            "liquibase.precondition", "liquibase.datatype",
+            "liquibase.serializer", "liquibase.sqlgenerator", "liquibase.executor",
+            "liquibase.snapshot", "liquibase.logging", "liquibase.diff",
+            "liquibase.structure", "liquibase.structurecompare", "liquibase.lockservice",
+            "liquibase.ext", "liquibase.changelog"));
     }
 }

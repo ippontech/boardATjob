@@ -1,0 +1,21 @@
+{
+    "boardatjobApp": {
+        "jobPost" : {
+            "home": {
+                "title": "JobPosts",
+                "createLabel": "Créer un nouveau JobPost",
+                "createOrEditLabel": "Créer ou éditer un JobPost"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le JobPost {{ id }} ?"
+            },
+            "detail": {
+                "title": "JobPost"
+            },
+            "title": "Title",
+            "description": "Description",
+            "requirements": "Requirements"
+        }
+    }
+}
+

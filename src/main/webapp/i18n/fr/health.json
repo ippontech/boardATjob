@@ -5,7 +5,7 @@
         "indicator": {
             "diskSpace": "Espace disque",
             "mail": "Email",
-            "mongo": "MongoDB"
+            "db": "Base de données"
         },
         "stacktrace": "Stacktrace",
         "table": {

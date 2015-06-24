@@ -1,7 +1,6 @@
 package com.ipponusa.boardatjob.service;
 
 import com.ipponusa.boardatjob.Application;
-import com.ipponusa.boardatjob.config.MongoConfiguration;
 import com.ipponusa.boardatjob.domain.PersistentToken;
 import com.ipponusa.boardatjob.domain.User;
 import com.ipponusa.boardatjob.repository.PersistentTokenRepository;
@@ -13,7 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.context.annotation.Import;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -32,7 +31,7 @@ import static org.assertj.core.api.Assertions.*;
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest
-@Import(MongoConfiguration.class)
+@Transactional
 public class UserServiceTest {
 
     @Inject
@@ -162,6 +161,6 @@ public class UserServiceTest {
         token.setTokenDate(localDate);
         token.setIpAddress("127.0.0.1");
         token.setUserAgent("Test agent");
-        persistentTokenRepository.save(token);
+        persistentTokenRepository.saveAndFlush(token);
     }
 }

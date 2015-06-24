@@ -93,7 +93,7 @@ public class CustomPersistentRememberMeServices extends
         token.setIpAddress(request.getRemoteAddr());
         token.setUserAgent(request.getHeader("User-Agent"));
         try {
-            persistentTokenRepository.save(token);
+            persistentTokenRepository.saveAndFlush(token);
             addCookie(token, request, response);
         } catch (DataAccessException e) {
             log.error("Failed to update token: ", e);
@@ -118,7 +118,7 @@ public class CustomPersistentRememberMeServices extends
             return t;
         }).orElseThrow(() -> new UsernameNotFoundException("User " + login + " was not found in the database"));
         try {
-            persistentTokenRepository.save(token);
+            persistentTokenRepository.saveAndFlush(token);
             addCookie(token, request, response);
         } catch (DataAccessException e) {
             log.error("Failed to save persistent token ", e);
