@@ -32,18 +32,12 @@ public class Job implements Serializable {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Lob
-    @Type(type = "org.hibernate.type.TextType")
     @Column(name = "description")
     private String description;
 
-    @Lob
-    @Type(type = "org.hibernate.type.TextType")
     @Column(name = "responsibilities")
     private String responsibilities;
 
-    @Lob
-    @Type(type = "org.hibernate.type.TextType")
     @Column(name = "requirements")
     private String requirements;
 

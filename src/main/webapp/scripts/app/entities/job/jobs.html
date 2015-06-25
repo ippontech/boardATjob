@@ -25,12 +25,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" name="id"
-                                   ng-model="job.id" readonly>
-                        </div>
-
-                        <div class="form-group">
                             <label translate="boardatjobApp.job.title">Title</label>
                             <input type="text" class="form-control" name="title"
                                    ng-model="job.title" required>
@@ -115,7 +109,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th translate="boardatjobApp.job.title">Title</th>
                     <th translate="boardatjobApp.job.description">Description</th>
                     <th translate="boardatjobApp.job.responsibilities">Responsibilities</th>
@@ -127,7 +120,6 @@
             </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                 <tr ng-repeat="job in jobs">
-                    <td><a ui-sref="jobDetail({id:job.id})">{{job.id}}</a></td>
                     <td>{{job.title}}</td>
                     <td>{{job.description}}</td>
                     <td>{{job.responsibilities}}</td>

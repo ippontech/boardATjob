@@ -31,8 +31,6 @@ public class Company implements Serializable {
     @Column(name = "location")
     private String location;
 
-    @Lob
-    @Type(type = "org.hibernate.type.TextType")
     @Column(name = "description")
     private String description;
 
