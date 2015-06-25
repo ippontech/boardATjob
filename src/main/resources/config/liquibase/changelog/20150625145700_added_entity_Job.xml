@@ -11,17 +11,30 @@
     <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql"/>
     <property name="autoIncrement" value="false" dbms="oracle"/>
     <!--
-        Added the entity JobPost.
+        Added the entity Job.
     -->
-    <changeSet id="20150624205347" author="jhipster">
-        <createTable tableName="JOBPOST">
+    <changeSet id="20150625145700" author="jhipster">
+        <createTable tableName="JOB">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="title" type="varchar(255)"/>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
             <column name="description" type="varchar(255)"/>
+            <column name="responsibilities" type="varchar(255)"/>
             <column name="requirements" type="varchar(255)"/>
+            <column name="post_date" type="timestamp"/>
+            <column name="companylisting_id" type="bigint"/>
         </createTable>
+        <dropDefaultValue tableName="JOB" columnName="post_date" columnDataType="datetime"/>
+
+        
+        <addForeignKeyConstraint baseColumnNames="companylisting_id"
+                                 baseTableName="JOB"
+                                 constraintName="fk_job_companylisting_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="COMPANY"/>
 
     </changeSet>
 </databaseChangeLog>

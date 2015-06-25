@@ -1,0 +1,24 @@
+{
+    "boardatjobApp": {
+        "job" : {
+            "home": {
+                "title": "Jobs",
+                "createLabel": "Créer un nouveau Job",
+                "createOrEditLabel": "Créer ou éditer un Job"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Job {{ id }} ?"
+            },
+            "detail": {
+                "title": "Job"
+            },
+            "title": "Title",
+            "description": "Description",
+            "responsibilities": "Responsibilities",
+            "requirements": "Requirements",
+            "postDate": "PostDate",
+            "companyListing": "companyListing"
+        }
+    }
+}
+

@@ -7,6 +7,8 @@
             "entities": {
                 "main": "Entités",
                 "jobPost": "JobPost",
+                "company": "Company",
+                "job": "Job",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

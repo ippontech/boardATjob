@@ -1,0 +1,76 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "companyListing",
+            "relationshipNameCapitalized": "CompanyListing",
+            "relationshipFieldName": "companyListing",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Company",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Title",
+            "fieldNameUnderscored": "title",
+            "fieldInJavaBeanMethod": "Title",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Description",
+            "fieldNameUnderscored": "description",
+            "fieldInJavaBeanMethod": "Description",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "responsibilities",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Responsibilities",
+            "fieldNameUnderscored": "responsibilities",
+            "fieldInJavaBeanMethod": "Responsibilities",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "requirements",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Requirements",
+            "fieldNameUnderscored": "requirements",
+            "fieldInJavaBeanMethod": "Requirements",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "postDate",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "PostDate",
+            "fieldNameUnderscored": "post_date",
+            "fieldInJavaBeanMethod": "PostDate",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": true,
+    "fieldsContainDate": false,
+    "changelogDate": "20150625145700",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "validation": true
+}

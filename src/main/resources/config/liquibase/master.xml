@@ -6,5 +6,9 @@
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150624205347_added_entity_JobPost.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150625145157_added_entity_Company.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150625145700_added_entity_Job.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150625163800_updated_job_field_types.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150625165200_updated_company_field_types.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>
