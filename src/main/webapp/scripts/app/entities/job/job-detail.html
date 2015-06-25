@@ -1,13 +1,14 @@
 
 <div>
-    <h2><span translate="boardatjobApp.job.detail.title">Job</span> {{job.id}}</h2>
+    <h2><span>{{job.title}} @
+            <a ui-sref="entity.companyDetails({id: job.companyListing.id})">
+                {{job.companyListing.name}}
+            </a>
+    </span></h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th translate="entity.detail.field">Field</th>
-                    <th translate="entity.detail.value">Value</th>
-                </tr>
+
             </thead>
             <tbody>
                 <tr>
@@ -15,7 +16,7 @@
                         <span translate="boardatjobApp.job.title">Title</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{job.title}}" readonly>
+                        {{job.title}}
                     </td>
                 </tr>
                 <tr>
@@ -23,7 +24,7 @@
                         <span translate="boardatjobApp.job.description">Description</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{job.description}}" readonly>
+                        {{job.description}}
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +32,7 @@
                         <span translate="boardatjobApp.job.responsibilities">Responsibilities</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{job.responsibilities}}" readonly>
+                        {{job.responsibilities}}
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +40,7 @@
                         <span translate="boardatjobApp.job.requirements">Requirements</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{job.requirements}}" readonly>
+                        {{job.requirements}}
                     </td>
                 </tr>
                 <tr>
@@ -47,15 +48,7 @@
                         <span translate="boardatjobApp.job.postDate">PostDate</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{job.postDate}}" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span translate="boardatjobApp.job.companyListing">companyListing</span>
-                    </td>
-                    <td>
-                        <input type="text" class="input-sm form-control" value="{{job.companyListing.name}}" readonly>
+                        {{job.postDate}}
                     </td>
                 </tr>
             </tbody>
