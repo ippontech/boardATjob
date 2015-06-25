@@ -32,12 +32,15 @@ public class Job implements Serializable {
     @Column(name = "title", nullable = false)
     private String title;
 
+    @Lob
     @Column(name = "description")
     private String description;
 
+    @Lob
     @Column(name = "responsibilities")
     private String responsibilities;
 
+    @Lob
     @Column(name = "requirements")
     private String requirements;
 

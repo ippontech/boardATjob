@@ -30,6 +30,7 @@ public class Company implements Serializable {
     @Column(name = "location")
     private String location;
 
+    @Lob
     @Column(name = "description")
     private String description;
 
