@@ -40,28 +40,52 @@ module.exports = function (config) {
         // list of files / patterns to exclude
         exclude: [],
 
-        // web server port
-        port: 9876,
+       // preprocess matching files before serving them to the browser
+       // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+       preprocessors: {
+            'src/**/*.js': ['coverage']
+       }, 
+    
+       // test results reporter to use
+       // possible values: 'dots', 'progress'
+       // available reporters: https://npmjs.org/browse/keyword/karma-reporter
 
-        // level of logging
-        // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-        logLevel: config.LOG_INFO,
+       reporters: ['dots', 'jenkins','coverage', 'progress'],
 
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: false,
+       jenkinsReporter: {
+           outputFile: '../target/test-results/karma/TESTS-resuts.xml'
+       },  
 
-        // Start these browsers, currently available:
-        // - Chrome
-        // - ChromeCanary
-        // - Firefox
-        // - Opera
-        // - Safari (only Mac)
-        // - PhantomJS
-        // - IE (only Windows)
-        browsers: ['PhantomJS'],
+       coverageReporter: {
+           dir: '../target/test-results/coverage',
 
-        // Continuous Integration mode
-        // if true, it capture browsers, run tests and exit
-        singleRun: false
+           reporters: [
+               { type: 'lcov', subdir: 'report-lcov'}
+           ]   
+       },  
+
+       // weoeb server port
+       port: 9876,
+
+       // level of logging
+       // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
+       logLevel: config.LOG_INFO,
+
+       // enable / disable watching file and executing tests whenever any file changes
+       autoWatch: false,
+
+       // Start these browsers, currently available:
+       // - Chrome
+       // - ChromeCanary
+       // - Firefox
+       // - Opera
+       // - Safari (only Mac)
+       // - PhantomJS
+       // - IE (only Windows)
+       browsers: ['PhantomJS'],
+
+       // Continuous Integration mode
+       // if true, it capture browsers, run tests and exit
+       singleRun: false
     });
 };
