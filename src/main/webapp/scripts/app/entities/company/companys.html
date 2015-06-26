@@ -1,6 +1,6 @@
 <div>
 
-    <h2 translate="boardatjobApp.company.home.title">Companys</h2>
+    <h2 translate="boardatjobApp.company.home.title">Companies</h2>
 
     <div class="container">
         <div class="row">
@@ -88,16 +88,8 @@
         </div>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive" style="margin-top: 10px">
         <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th translate="boardatjobApp.company.name">Name</th>
-                    <th translate="boardatjobApp.company.location">Location</th>
-                    <th translate="boardatjobApp.company.description">Description</th>
-                    <th></th>
-                </tr>
-            </thead>
             <tbody>
                 <tr ng-repeat="company in companys">
                     <td>{{company.name}}</td>
