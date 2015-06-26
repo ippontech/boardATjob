@@ -105,25 +105,12 @@
         </div>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive" style="margin-top: 10px">
         <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th translate="boardatjobApp.job.title">Title</th>
-                    <th translate="boardatjobApp.job.description">Description</th>
-                    <th translate="boardatjobApp.job.responsibilities">Responsibilities</th>
-                    <th translate="boardatjobApp.job.requirements">Requirements</th>
-                    <th translate="boardatjobApp.job.postDate">PostDate</th>
-                    <th translate="boardatjobApp.job.companyListing">companyListing</th>
-                    <th></th>
-                </tr>
-            </thead>
             <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                 <tr ng-repeat="job in jobs">
                     <td>{{job.title}}</td>
                     <td>{{job.description}}</td>
-                    <td>{{job.responsibilities}}</td>
-                    <td>{{job.requirements}}</td>
                     <td>{{job.postDate}}</td>
                     <td>{{job.companyListing.name}}</td>
                     <td>

@@ -2,7 +2,7 @@
     "boardatjobApp": {
         "company" : {
             "home": {
-                "title": "Companys",
+                "title": "Companies",
                 "createLabel": "Create a new Company",
                 "createOrEditLabel": "Create or edit a Company"
             },
