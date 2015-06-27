@@ -1,0 +1,25 @@
+{
+    "boardatjobApp": {
+        "jobApplication" : {
+            "home": {
+                "title": "JobApplications",
+                "createLabel": "Create a new JobApplication",
+                "createOrEditLabel": "Create or edit a JobApplication"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete JobApplication {{ id }}?"
+            },
+            "detail": {
+                "title": "JobApplication"
+            },
+            "firstName": "FirstName",
+            "lastName": "LastName",
+            "country": "Country",
+            "zipCode": "ZipCode",
+            "phoneNumber": "PhoneNumber",
+            "isAuthorized": "IsAuthorized",
+            "createdBy": "createdBy",
+            "createdFor": "createdFor"
+        }
+    }
+}
