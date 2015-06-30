@@ -2,7 +2,8 @@
     "register": {
         "title": "Création de compte utilisateur",
         "form": {
-            "button": "Enregistrement"
+            "button": "Enregistrement",
+            "recruiter": "Enregistrement Recruteur"
         },
         "messages": {
             "validate": {

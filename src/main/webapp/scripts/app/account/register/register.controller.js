@@ -9,7 +9,7 @@ angular.module('boardatjobApp')
         $scope.registerAccount = {};
         $timeout(function (){angular.element('[ng-model="registerAccount.login"]').focus();});
 
-        $scope.register = function () {
+        $scope.register = function (isRecruiter) {
             if ($scope.registerAccount.password !== $scope.confirmPassword) {
                 $scope.doNotMatch = 'ERROR';
             } else {
@@ -18,6 +18,10 @@ angular.module('boardatjobApp')
                 $scope.error = null;
                 $scope.errorUserExists = null;
                 $scope.errorEmailExists = null;
+                if(isRecruiter) {
+                    console.log('creating recruiter');
+                    $scope.registerAccount.roles = ["ROLE_RECRUITER"];
+                }
 
                 Auth.createAccount($scope.registerAccount).then(function () {
                     $scope.success = 'OK';
