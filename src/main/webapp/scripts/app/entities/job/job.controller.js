@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('boardatjobApp')
-    .controller('JobController', function ($scope, Job, Company, ParseLinks) {
+    .controller('JobController', function ($scope, Job, Company, ParseLinks, Principal) {
+        $scope.isAuthenticated = Principal.isAuthenticated;
         $scope.jobs = [];
         $scope.companys = Company.query();
         $scope.page = 1;
