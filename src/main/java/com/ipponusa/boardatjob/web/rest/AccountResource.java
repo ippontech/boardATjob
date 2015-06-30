@@ -24,6 +24,7 @@ import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -54,26 +55,47 @@ public class AccountResource {
             method = RequestMethod.POST,
             produces = MediaType.TEXT_PLAIN_VALUE)
     @Timed
-    public ResponseEntity<?> registerAccount(@Valid @RequestBody UserDTO userDTO, HttpServletRequest request) {
-        log.debug("THE USER ROLES ARE: {}", userDTO.getRoles());
+    public ResponseEntity<?> registerUser(@Valid @RequestBody UserDTO userDTO, HttpServletRequest request) {
+        return registerAccount(userDTO, request, u -> {
+            return userService.createUserInformation(u.getLogin(), u.getPassword(),
+                u.getFirstName(), u.getLastName(), u.getEmail().toLowerCase(),
+                u.getLangKey());
+        });
+    }
+
+    /**
+     * POST /register_recruiter -> Lets us register a recruiter
+     */
+    @RequestMapping(value = "/register_recruiter",
+            method = RequestMethod.POST,
+            produces = MediaType.TEXT_PLAIN_VALUE)
+    @Timed
+    public ResponseEntity<?> registerRecruiterAccount(@Valid @RequestBody UserDTO userDTO, HttpServletRequest request) {
+        return registerAccount(userDTO, request, u -> {
+            return userService.createRecruiterInformation(u.getLogin(), u.getPassword(),
+                u.getFirstName(), u.getLastName(), u.getEmail().toLowerCase(),
+                u.getLangKey());
+        });
+    }
+
+    public ResponseEntity<?> registerAccount(UserDTO userDTO, HttpServletRequest request,
+                                             Function<UserDTO, User> create) {
         return userRepository.findOneByLogin(userDTO.getLogin())
             .map(user -> new ResponseEntity<>("login already in use", HttpStatus.BAD_REQUEST))
             .orElseGet(() -> userRepository.findOneByEmail(userDTO.getEmail())
-                .map(user -> new ResponseEntity<>("e-mail address already in use", HttpStatus.BAD_REQUEST))
-                .orElseGet(() -> {
-                    User user = userService.createUserInformation(userDTO.getLogin(), userDTO.getPassword(),
-                    userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail().toLowerCase(),
-                    userDTO.getLangKey(), userDTO.getRoles());
-                    String baseUrl = request.getScheme() + // "http"
-                    "://" +                                // "://"
-                    request.getServerName() +              // "myhost"
-                    ":" +                                  // ":"
-                    request.getServerPort();               // "80"
+                    .map(user -> new ResponseEntity<>("e-mail address already in use", HttpStatus.BAD_REQUEST))
+                    .orElseGet(() -> {
+                        User user = create.apply(userDTO);
+                        String baseUrl = request.getScheme() + // "http"
+                            "://" +                                // "://"
+                            request.getServerName() +              // "myhost"
+                            ":" +                                  // ":"
+                            request.getServerPort();               // "80"
 
-                    mailService.sendActivationEmail(user, baseUrl);
-                    return new ResponseEntity<>(HttpStatus.CREATED);
-                })
-        );
+                        mailService.sendActivationEmail(user, baseUrl);
+                        return new ResponseEntity<>(HttpStatus.CREATED);
+                    })
+            );
     }
 
     /**

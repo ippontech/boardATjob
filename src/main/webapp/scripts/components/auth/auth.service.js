@@ -10,7 +10,7 @@ angular.module('boardatjobApp')
                 AuthServerProvider.login(credentials).then(function (data) {
                     // retrieve the logged account information
                     Principal.identity(true).then(function(account) {
-                      
+
                         // After the login the language will be changed to
                         // the language selected by the user during his registration
                         $translate.use(account.langKey);
@@ -53,6 +53,19 @@ angular.module('boardatjobApp')
                             }
                         }
                     });
+            },
+            // Need to improve this -- lots of duplication here and in createAccount
+            createRecruiter: function (account, callback) {
+                var cb = callback || angular.noop;
+
+                return Register.save(account, {url: 'api/register_recruiter'},
+                    function () {
+                        return cb(account);
+                    },
+                    function (err) {
+                        this.logout();
+                        return cb(err);
+                    }.bind(this)).$promise;
             },
             createAccount: function (account, callback) {
                 var cb = callback || angular.noop;

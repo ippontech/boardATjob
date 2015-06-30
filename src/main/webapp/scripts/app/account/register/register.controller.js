@@ -9,7 +9,7 @@ angular.module('boardatjobApp')
         $scope.registerAccount = {};
         $timeout(function (){angular.element('[ng-model="registerAccount.login"]').focus();});
 
-        $scope.register = function (isRecruiter) {
+        $scope.registerRecruiter = function () {
             if ($scope.registerAccount.password !== $scope.confirmPassword) {
                 $scope.doNotMatch = 'ERROR';
             } else {
@@ -18,10 +18,31 @@ angular.module('boardatjobApp')
                 $scope.error = null;
                 $scope.errorUserExists = null;
                 $scope.errorEmailExists = null;
-                if(isRecruiter) {
-                    console.log('creating recruiter');
-                    $scope.registerAccount.roles = ["ROLE_RECRUITER"];
-                }
+
+                Auth.createRecruiter($scope.registerAccount).then(function () {
+                    $scope.success = 'OK';
+                }).catch(function (response) {
+                    $scope.success = null;
+                    if (response.status === 400 && response.data === 'login already in use') {
+                        $scope.errorUserExists = 'ERROR';
+                    } else if (response.status === 400 && response.data === 'e-mail address already in use') {
+                        $scope.errorEmailExists = 'ERROR';
+                    } else {
+                        $scope.error = 'ERROR';
+                    }
+                });
+            }
+        };
+
+        $scope.register = function () {
+            if ($scope.registerAccount.password !== $scope.confirmPassword) {
+                $scope.doNotMatch = 'ERROR';
+            } else {
+                $scope.registerAccount.langKey = $translate.use();
+                $scope.doNotMatch = null;
+                $scope.error = null;
+                $scope.errorUserExists = null;
+                $scope.errorEmailExists = null;
 
                 Auth.createAccount($scope.registerAccount).then(function () {
                     $scope.success = 'OK';
