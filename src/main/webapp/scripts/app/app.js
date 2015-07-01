@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalprecht.translate', 
-    'ngResource', 'ui.router', 'ngCookies', 'ngCacheBuster', 'infinite-scroll'])
+angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalprecht.translate',
+    'ngResource', 'ui.router', 'ngCookies', 'ngCacheBuster', 'infinite-scroll', 'ui.bootstrap'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Language, Auth, Principal, ENV, VERSION) {
         $rootScope.ENV = ENV;
@@ -13,12 +13,12 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
             if (Principal.isIdentityResolved()) {
                 Auth.authorize();
             }
-            
+
             // Update the language
             Language.getCurrent().then(function (language) {
                 $translate.use(language);
             });
-            
+
         });
 
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
@@ -31,12 +31,12 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
             if (toState.data.pageTitle) {
                 titleKey = toState.data.pageTitle;
             }
-            
+
             $translate(titleKey).then(function (title) {
                 // Change window title with translated one
                 $window.document.title = title;
             });
-            
+
         });
 
         $rootScope.back = function() {
@@ -53,7 +53,7 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
             responseError: function(response) {
                 // If we have an unauthorized request we redirect to the login page
                 // Don't do this check on the account API to avoid infinite loop
-                if (response.status == 401 && response.data.path!="/api/account"){  
+                if (response.status == 401 && response.data.path!="/api/account"){
                     var Auth = $injector.get('Auth');
                     var $state = $injector.get('$state');
                     var to = $rootScope.toState;
@@ -61,8 +61,8 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
                     Auth.logout();
                     $rootScope.returnToState = to;
                     $rootScope.returnToStateParams = params;
-                    $state.go('login');    
-                }       
+                    $state.go('login');
+                }
                 return $q.reject(response);
             }
         };
@@ -102,7 +102,7 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
         $httpProvider.interceptors.push('authExpiredInterceptor');
 
 
-        
+
         // Initialize angular-translate
         $translateProvider.useLoader('$translatePartialLoader', {
             urlTemplate: 'i18n/{lang}/{part}.json'
@@ -115,5 +115,5 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
         tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
         tmhDynamicLocaleProvider.useCookieStorage();
         tmhDynamicLocaleProvider.storageKey('NG_TRANSLATE_LANG_KEY');
-        
+
     });

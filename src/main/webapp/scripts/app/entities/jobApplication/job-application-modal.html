@@ -1,0 +1,75 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="clear()">&times;</button>
+    <h4 class="modal-title" id="myJobApplicationLabel" translate="boardatjobApp.job.jobApplication.home.createLabel">Job Application</h4>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label translate="boardatjobApp.job.jobApplication.firstName">FirstName</label>
+        <input type="text" class="form-control" name="firstName"
+               ng-model="jobApplication.firstName" required>
+
+        <div ng-show="editForm.firstName.$invalid">
+            <p class="help-block"
+               ng-show="editForm.firstName.$error.required" translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label translate="boardatjobApp.job.jobApplication.lastName">LastName</label>
+        <input type="text" class="form-control" name="lastName"
+               ng-model="jobApplication.lastName" required>
+
+        <div ng-show="editForm.lastName.$invalid">
+            <p class="help-block"
+               ng-show="editForm.lastName.$error.required" translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label translate="boardatjobApp.job.jobApplication.country">Country</label>
+        <input type="text" class="form-control" name="country"
+               ng-model="jobApplication.country" required>
+
+        <div ng-show="editForm.country.$invalid">
+            <p class="help-block"
+               ng-show="editForm.country.$error.required" translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label translate="boardatjobApp.job.jobApplication.zipCode">Zip Code</label>
+        <input type="text" class="form-control" name="zipCode"
+               ng-model="jobApplication.zipCode" required>
+
+        <div ng-show="editForm.zipCode.$invalid">
+            <p class="help-block"
+               ng-show="editForm.zipCode.$error.required" translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label translate="boardatjobApp.job.jobApplication.phoneNumber">PhoneNumber</label>
+        <input type="text" class="form-control" name="phoneNumber"
+               ng-model="jobApplication.phoneNumber">
+
+    </div>
+    <div class="form-group">
+        <label translate="boardatjobApp.job.jobApplication.isAuthorized">IsAuthorized</label>
+        <input type="checkbox" class="form-control" name="isAuthorized"
+               ng-model="jobApplication.isAuthorized">
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+    </button>
+    <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+    </button>
+</div>

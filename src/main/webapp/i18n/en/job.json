@@ -17,7 +17,26 @@
             "responsibilities": "Responsibilities",
             "requirements": "Requirements",
             "postDate": "Post Date",
-            "companyListing": "companyListing"
+            "companyListing": "companyListing",
+            "jobApplication" : {
+                "home": {
+                    "title": "JobApplications",
+                    "createLabel": "Job Application",
+                    "createOrEditLabel": "Create or edit a JobApplication"
+                },
+                "delete": {
+                    "question": "Are you sure you want to delete JobApplication {{ id }}?"
+                },
+                "detail": {
+                    "title": "Job Application"
+                },
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "country": "Country",
+                "zipCode": "Zip Code",
+                "phoneNumber": "Phone Number",
+                "isAuthorized": "Are you authorized to work in the US?"
+            }
         }
     }
 }

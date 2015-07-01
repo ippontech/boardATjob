@@ -48,13 +48,18 @@
                         <span translate="boardatjobApp.job.postDate">PostDate</span>
                     </td>
                     <td>
-                        {{job.postDate}}
+                        {{job.postDate | date: 'MM/dd/yyyy'}}
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-
+    <button type="submit"
+            has-role="ROLE_USER"
+            ui-sref="applyForJob({id: job.id})"
+            class="btn btn-default">
+        Apply
+    </button>
     <button type="submit"
             ui-sref="job"
             class="btn btn-info">

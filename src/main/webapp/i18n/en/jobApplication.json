@@ -3,7 +3,7 @@
         "jobApplication" : {
             "home": {
                 "title": "JobApplications",
-                "createLabel": "Create a new JobApplication",
+                "createLabel": "Job Application",
                 "createOrEditLabel": "Create or edit a JobApplication"
             },
             "delete": {
@@ -16,7 +16,7 @@
             "lastName": "LastName",
             "country": "Country",
             "zipCode": "ZipCode",
-            "phoneNumber": "PhoneNumber",
+            "phoneNumber": "Phone Number",
             "isAuthorized": "IsAuthorized",
             "createdBy": "createdBy",
             "createdFor": "createdFor"

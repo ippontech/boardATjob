@@ -114,21 +114,18 @@
                     <td>{{job.postDate}}</td>
                     <td>{{job.companyListing.name}}</td>
                     <td ng-switch="isAuthenticated()">
-                        <button ng-switch-when="true" has-role="ROLE_USER" type="submit"
-                                class="btn btn-default btn-sm">
-                            APPLY
-                        </button>
-                        <button has-role="ROLE_RECRUITER" type="submit"
+
+                        <button type="submit"
                                 ui-sref="jobDetail({id:job.id})"
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
-                        <button type="submit"
+                        <button has-role="ROLE_RECRUITER" type="submit"
                                 ng-click="showUpdate(job.id)"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
-                        <button type="submit"
+                        <button has-role="ROLE_RECRUITER" type="submit"
                                 ng-click="delete(job.id)"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
