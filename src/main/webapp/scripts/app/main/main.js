@@ -4,6 +4,7 @@ angular.module('boardatjobApp')
     .config(function ($stateProvider) {
         $stateProvider
             .state('home', {
+            	name: 'home',
                 parent: 'site',
                 url: '/',
                 data: {
@@ -13,6 +14,10 @@ angular.module('boardatjobApp')
                     'content@': {
                         templateUrl: 'scripts/app/main/main.html',
                         controller: 'MainController'
+                    },
+                    'jobList@home': {
+                        templateUrl: 'scripts/app/entities/job/jobList.html',
+                        controller: 'JobController'
                     }
                 },
                 resolve: {
