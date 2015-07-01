@@ -58,7 +58,7 @@ angular.module('boardatjobApp')
             createRecruiter: function (account, callback) {
                 var cb = callback || angular.noop;
 
-                return Register.save(account, {url: 'api/register_recruiter'},
+                return Register.saveRecruiter(account,
                     function () {
                         return cb(account);
                     },
