@@ -9,6 +9,7 @@
                 "jobPost": "JobPost",
                 "company": "Company",
                 "job": "Job",
+                "jobApplication": "JobApplication",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

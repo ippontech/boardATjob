@@ -7,7 +7,7 @@ angular.module('boardatjobApp')
                 parent: 'account',
                 url: '/password',
                 data: {
-                    roles: ['ROLE_USER'],
+                    roles: ['ROLE_USER', 'ROLE_RECRUITER'],
                     pageTitle: 'global.menu.account.password'
                 },
                 views: {

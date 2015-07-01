@@ -1,22 +1,22 @@
 'use strict';
 
 angular.module('boardatjobApp')
-    .controller('JobController', function ($scope, Job, Company, ParseLinks, Principal) {
-        $scope.isAuthenticated = Principal.isAuthenticated;
-        $scope.jobs = [];
-        $scope.companys = Company.query();
+    .controller('JobApplicationController', function ($scope, JobApplication, User, Job, ParseLinks) {
+        $scope.jobApplications = [];
+        $scope.users = User.query();
+        $scope.jobs = Job.query();
         $scope.page = 1;
         $scope.loadAll = function() {
-            Job.query({page: $scope.page, per_page: 20}, function(result, headers) {
+            JobApplication.query({page: $scope.page, per_page: 20}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
                 for (var i = 0; i < result.length; i++) {
-                    $scope.jobs.push(result[i]);
+                    $scope.jobApplications.push(result[i]);
                 }
             });
         };
         $scope.reset = function() {
             $scope.page = 1;
-            $scope.jobs = [];
+            $scope.jobApplications = [];
             $scope.loadAll();
         };
         $scope.loadPage = function(page) {
@@ -26,20 +26,20 @@ angular.module('boardatjobApp')
         $scope.loadAll();
 
         $scope.showUpdate = function (id) {
-            Job.get({id: id}, function(result) {
-                $scope.job = result;
-                $('#saveJobModal').modal('show');
+            JobApplication.get({id: id}, function(result) {
+                $scope.jobApplication = result;
+                $('#saveJobApplicationModal').modal('show');
             });
         };
 
         $scope.save = function () {
-            if ($scope.job.id != null) {
-                Job.update($scope.job,
+            if ($scope.jobApplication.id != null) {
+                JobApplication.update($scope.jobApplication,
                     function () {
                         $scope.refresh();
                     });
             } else {
-                Job.save($scope.job,
+                JobApplication.save($scope.jobApplication,
                     function () {
                         $scope.refresh();
                     });
@@ -47,29 +47,29 @@ angular.module('boardatjobApp')
         };
 
         $scope.delete = function (id) {
-            Job.get({id: id}, function(result) {
-                $scope.job = result;
-                $('#deleteJobConfirmation').modal('show');
+            JobApplication.get({id: id}, function(result) {
+                $scope.jobApplication = result;
+                $('#deleteJobApplicationConfirmation').modal('show');
             });
         };
 
         $scope.confirmDelete = function (id) {
-            Job.delete({id: id},
+            JobApplication.delete({id: id},
                 function () {
                     $scope.reset();
-                    $('#deleteJobConfirmation').modal('hide');
+                    $('#deleteJobApplicationConfirmation').modal('hide');
                     $scope.clear();
                 });
         };
 
         $scope.refresh = function () {
             $scope.reset();
-            $('#saveJobModal').modal('hide');
+            $('#saveJobApplicationModal').modal('hide');
             $scope.clear();
         };
 
         $scope.clear = function () {
-            $scope.job = {title: null, description: null, responsibilities: null, requirements: null, postDate: null, id: null};
+            $scope.jobApplication = {firstName: null, lastName: null, country: null, zipCode: null, phoneNumber: null, isAuthorized: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();
         };

@@ -23,7 +23,7 @@
                 The password and its confirmation do not match!
             </div>
 
-            <form ng-show="!success" name="form" role="form" novalidate ng-submit="register()" show-validation>
+            <form ng-show="!success" name="form" role="form" novalidate show-validation>
 
                 <div class="form-group">
                     <label translate="global.form.username">Login</label>
@@ -110,8 +110,8 @@
                         </p>
                     </div>
                 </div>
-
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="register.form.button">Register</button>
+                <button ng-click="register()" ng-disabled="form.$invalid" class="btn btn-primary" translate="register.form.button">Register</button>
+                <button ng-click="registerRecruiter()" ng-disabled="form.$invalid" class="btn btn-danger" translate="register.form.recruiter">Register Recruiter</button>
             </form>
             <p></p>
             <div class="alert alert-warning" translate="global.messages.info.authenticated">

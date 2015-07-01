@@ -3,42 +3,42 @@
 angular.module('boardatjobApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('job', {
+            .state('jobApplication', {
                 parent: 'entity',
-                url: '/job',
+                url: '/jobApplication',
                 data: {
                     roles: ['ROLE_USER', 'ROLE_RECRUITER'],
-                    pageTitle: 'boardatjobApp.job.home.title'
+                    pageTitle: 'boardatjobApp.jobApplication.home.title'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/job/jobs.html',
-                        controller: 'JobController'
+                        templateUrl: 'scripts/app/entities/jobApplication/jobApplications.html',
+                        controller: 'JobApplicationController'
                     }
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('job');
+                        $translatePartialLoader.addPart('jobApplication');
                         return $translate.refresh();
                     }]
                 }
             })
-            .state('jobDetail', {
+            .state('jobApplicationDetail', {
                 parent: 'entity',
-                url: '/job/:id',
+                url: '/jobApplication/:id',
                 data: {
                     roles: ['ROLE_USER', 'ROLE_RECRUITER'],
-                    pageTitle: 'boardatjobApp.job.detail.title'
+                    pageTitle: 'boardatjobApp.jobApplication.detail.title'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/job/job-detail.html',
-                        controller: 'JobDetailController'
+                        templateUrl: 'scripts/app/entities/jobApplication/jobApplication-detail.html',
+                        controller: 'JobApplicationDetailController'
                     }
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('job');
+                        $translatePartialLoader.addPart('jobApplication');
                         return $translate.refresh();
                     }]
                 }
