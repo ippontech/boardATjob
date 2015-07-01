@@ -1,9 +1,8 @@
 package com.ipponusa.boardatjob.repository;
 
-import com.ipponusa.boardatjob.domain.Job;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.ipponusa.boardatjob.domain.Job;
 
 /**
  * Spring Data JPA repository for the Job entity.
