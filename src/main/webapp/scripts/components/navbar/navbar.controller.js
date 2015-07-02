@@ -6,6 +6,6 @@ angular.module('boardatjobApp')
         $scope.$state = $state;
         $scope.logout = function () {
             Auth.logout();
-            $state.go('home');
+            $state.go('home', {}, {reload:true});
         };
     });

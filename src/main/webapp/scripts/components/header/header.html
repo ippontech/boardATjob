@@ -7,7 +7,7 @@
                 </h1>
             </div>
             <div ng-switch-when="true" class="col-md-6">
-                <button has-role="ROLE_RECRUITER" type="button" class="btn btn-default btn-lg PostAJob">
+                <button ui-sref="jobCreate" has-any-role="ROLE_RECRUITER, ROLE_ADMIN" type="button" class="btn btn-default btn-lg PostAJob">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     Post a Job
                 </button>

@@ -28,7 +28,8 @@ angular.module('boardatjobApp')
                     id: null
                 },
                 data: {
-                    roles: ['ROLE_USER']
+                    roles: ['ROLE_USER'],
+                    public: false
                 },
                 onEnter: onApply
             });

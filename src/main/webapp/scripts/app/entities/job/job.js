@@ -27,8 +27,9 @@ angular.module('boardatjobApp')
                 parent: 'entity',
                 url: '/job/:id',
                 data: {
-                    roles: ['ROLE_USER', 'ROLE_RECRUITER'],
-                    pageTitle: 'boardatjobApp.job.detail.title'
+                    roles: [],
+                    pageTitle: 'boardatjobApp.job.detail.title',
+                    public: true
                 },
                 views: {
                     'content@': {
@@ -45,7 +46,7 @@ angular.module('boardatjobApp')
             })
             .state('jobCreate', {
                 parent: 'entity',
-                url: '/job/create',
+                url: '/job/create/',
                 data: {
                     roles: ['ROLE_RECRUITER', 'ROLE_ADMIN']
                 },
@@ -54,6 +55,12 @@ angular.module('boardatjobApp')
                         templateUrl: 'scripts/app/entities/job/job-creation.html',
                         controller: 'JobCreateController'
                     }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('job');
+                        return $translate.refresh();
+                    }]
                 }
             })
     });

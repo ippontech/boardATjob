@@ -31,7 +31,7 @@ angular.module('boardatjobApp')
 
         $scope.closeModal = function() {
             $modalInstance.dismiss();
-            $scope.reset();
+            $scope.clear();
             $scope.$state.go('^');
         };
 

@@ -42,7 +42,7 @@ angular.module('boardatjobApp')
                                 // user is signed in but not authorized for desired state
                                 $state.go('accessdenied');
                             }
-                            else {
+                            else if(!$rootScope.toState.data.public) {
                                 // user is not authenticated. stow the state they wanted before you
                                 // send them to the signin state, so you can return them when you're done
                                 $rootScope.returnToState = $rootScope.toState;

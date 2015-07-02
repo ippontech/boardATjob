@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row">
-            <div has-role="ROLE_USER" class="col-md-4">
+            <div has-any-role="ROLE_RECRUITER, ROLE_ADMIN" class="col-md-4">
                 <button class="btn btn-primary" data-toggle="modal" data-target="#saveCompanyModal" ng-click="clear()">
                     <span class="glyphicon glyphicon-flash"></span> <span translate="boardatjobApp.company.home.createLabel">Create a new Company</span>
                 </button>
@@ -91,7 +91,7 @@
     <div class="table-responsive" style="margin-top: 10px">
         <table class="table table-striped">
             <tbody>
-                <tr ng-repeat="company in companys">
+                <tr ng-switch="isAuthenticated()" ng-repeat="company in companys">
                     <td>{{company.name}}</td>
                     <td>{{company.location}}</td>
                     <td>{{company.description}}</td>
@@ -101,12 +101,12 @@
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
-                        <button type="submit"
+                        <button has-any-role="ROLE_RECRUITER, ROLE_ADMIN" type="submit"
                                 ng-click="showUpdate(company.id)"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
-                        <button type="submit"
+                        <button has-any-role="ROLE_RECRUITER, ROLE_ADMIN" type="submit"
                                 ng-click="delete(company.id)"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>

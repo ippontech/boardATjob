@@ -1,16 +1,19 @@
 angular.module('boardatjobApp')
-    .controller('JobCreateController', function($scope, Job) {
+    .controller('JobCreateController', function($scope, $state, Company, Job) {
+        $scope.companys = Company.query();
+        $scope.$state = $state;
         $scope.save = function () {
             if ($scope.job.id != null) {
                 Job.update($scope.job,
                     function (res) {
                         $scope.clear();
-                        $state.go('jobDetail', {id: job.id});
+                        $scope.$state.go('jobDetail', {id: job.id});
                     });
             } else {
                 Job.save($scope.job,
-                    function () {
+                    function (res) {
                         $scope.clear();
+                        $scope.$state.go('home');
                     });
             }
         };

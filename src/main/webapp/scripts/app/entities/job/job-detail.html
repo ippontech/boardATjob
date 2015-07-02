@@ -54,15 +54,17 @@
             </tbody>
         </table>
     </div>
-    <button type="submit"
-            has-role="ROLE_USER"
-            ui-sref="applyForJob({id: job.id})"
-            class="btn btn-default">
-        Apply
-    </button>
-    <button type="submit"
-            ui-sref="job"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
+    <div ng-switch="isPublic">
+        <button type="submit"
+                ui-sref="home"
+                class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+        </button>
+        <button type="submit"
+                ng-switch-when="true"
+                ui-sref="applyForJob({id: job.id})"
+                class="btn btn-default">
+            Apply
+        </button>
+    </div>
 </div>

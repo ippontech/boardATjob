@@ -16,7 +16,9 @@
         </p>
         <p>
             <span ng-if="jobApplication.phoneNumber != null" class="glyphicon glyphicon-earphone"></span> {{jobApplication.phoneNumber}}
-            <span style="font-size:15px" class="pull-right close" ng-click="delete(jobApplication.id)">Delete</span>
+            <span class="pull-right close">
+                <span style="font-size:15px" ng-click="delete(jobApplication.id)">Delete</span>
+            </span>
         </p>
     </div>
 

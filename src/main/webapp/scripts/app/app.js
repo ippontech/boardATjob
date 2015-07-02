@@ -89,6 +89,9 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
                     controller: 'HeaderController'
                 }
             },
+            data: {
+                public: false
+            },
             resolve: {
                 authorize: ['Auth',
                     function (Auth) {
