@@ -2,7 +2,7 @@
     "boardatjobApp": {
         "jobApplication" : {
             "home": {
-                "title": "JobApplications",
+                "title": "Applications",
                 "createLabel": "Job Application",
                 "createOrEditLabel": "Create or edit a JobApplication"
             },

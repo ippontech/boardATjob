@@ -1,0 +1,30 @@
+<div ng-switch="isAuthenticated()" class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 id="logo" class="logo">
+                    <a href="">Board@Job</a>
+                </h1>
+            </div>
+            <div ng-switch-when="true" class="col-md-6">
+                <button has-role="ROLE_RECRUITER" type="button" class="btn btn-default btn-lg PostAJob">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Post a Job
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="splash-with-image">
+    <div class="container">
+        <div class="row announcement">
+            <div class="col-md-12">
+					<span>Lorem ipsum dolor sit amet, consectetuer adipiscing
+						elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+						natoque penatibus et magnis dis parturient montes, nascetur
+						ridiculus mus. Donec quam felis.</span>
+            </div>
+        </div>
+    </div>
+</div>

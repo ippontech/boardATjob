@@ -70,7 +70,5 @@ angular.module('boardatjobApp')
 
         $scope.clear = function () {
             $scope.jobApplication = {firstName: null, lastName: null, country: null, zipCode: null, phoneNumber: null, isAuthorized: null, id: null};
-            $scope.editForm.$setPristine();
-            $scope.editForm.$setUntouched();
         };
     });
