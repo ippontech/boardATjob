@@ -14,14 +14,14 @@ async:
     queueCapacity: 10000
 
 mail:
-    host: localhost
-    port: 25
-    username:
-    password:
+    host: smtp.sendgrid.net
+    port: 587
+    username: kniklawski_ipponusa
+    password: s3ndma1l
     protocol: smtp
     tls: false
-    auth: false
-    from: boardatjob@localhost
+    auth: true
+    from: noreply@boardatjob.com
 
 
 swagger:
