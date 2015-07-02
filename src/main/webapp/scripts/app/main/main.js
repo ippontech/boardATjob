@@ -14,7 +14,7 @@ angular.module('boardatjobApp')
                         templateUrl: 'scripts/app/main/main.html',
                         controller: 'MainController'
                     },
-                    'applicants@home': {
+                    'applicants@': {
                         templateUrl: 'scripts/app/entities/jobApplication/jobApplications.html',
                         controller: 'JobApplicationController'
                     }
