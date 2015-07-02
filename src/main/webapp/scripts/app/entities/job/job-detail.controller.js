@@ -10,5 +10,4 @@ angular.module('boardatjobApp')
         };
         $scope.load($stateParams.id);
         $scope.isPublic = $state.current.data.public;
-        console.log($scope.isPublic);
     });
