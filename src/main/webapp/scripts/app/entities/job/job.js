@@ -42,5 +42,18 @@ angular.module('boardatjobApp')
                         return $translate.refresh();
                     }]
                 }
-            });
+            })
+            .state('jobCreate', {
+                parent: 'entity',
+                url: '/job/create',
+                data: {
+                    roles: ['ROLE_RECRUITER', 'ROLE_ADMIN']
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/job/job-creation.html',
+                        controller: 'JobCreateController'
+                    }
+                }
+            })
     });

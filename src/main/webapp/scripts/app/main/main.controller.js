@@ -6,4 +6,6 @@ angular.module('boardatjobApp')
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
+
+        $scope.isRecruiter = Principal.isInRole('ROLE_RECRUITER');
     });

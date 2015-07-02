@@ -1,4 +1,4 @@
-<div class="row" ng-switch="isAuthenticated()">
+<div class="row">
 
 	<!-- Blog Sidebar Widgets Column -->
 	<div class="col-md-3">
@@ -40,10 +40,14 @@
 
 	<!-- Blog Entries Column -->
 	<div class="col-md-9">
-        <div ng-switch-when="true">
-            <div has-role="ROLE_RECRUITER" ui-view="applicants"></div>
+        <div ng-switch="isAuthenticated">
+            <div ng-switch-when="true">
+                <div has-role="ROLE_RECRUITER" ui-view="applicants"></div>
+            </div>
         </div>
-        <div has-any-role="ROLE_USER, ROLE_ANONYMOUS, ROLE_ADMIN" ui-view="jobList"></div>
+        <div ng-switch="isRecruiter"
+            <div ui-view="jobList"></div>
+        </div>
 
 
 		<!-- Pager -->
