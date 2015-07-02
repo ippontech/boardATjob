@@ -1,5 +1,9 @@
 <div class="row">
-    <div ui-view="myView"></div>
+    <div ng-switch="isAuthenticated()">
+        <div ng-switch-when="true">
+            <div has-role="ROLE_RECRUITER" ui-view="applicants"></div>
+        </div>
+    </div>
 	<!-- Blog Sidebar Widgets Column -->
 	<div class="col-md-3">
 

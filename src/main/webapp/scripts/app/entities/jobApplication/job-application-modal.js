@@ -16,10 +16,6 @@ angular.module('boardatjobApp')
                             return account;
                         })
                     }
-                    /*
-                    currentUserId: function(currentUser, User) {
-                        console.log(currentUser);
-                    }*/
                 }
             })
         };
