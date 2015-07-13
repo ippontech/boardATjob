@@ -61,6 +61,10 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale',
                 'navbar@': {
                     templateUrl: 'scripts/components/navbar/navbar.html',
                     controller: 'NavbarController'
+                },
+                'header@': {
+                    templateUrl: 'scripts/components/header/header.html',
+                    controller: 'HeaderController'
                 }
             },
             resolve: {

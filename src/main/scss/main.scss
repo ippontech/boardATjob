@@ -1,113 +1,212 @@
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
-
+$image-base-path: "../../assets/images/";
+    
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    padding-top: 40px;
 }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
+footer {
+    margin: 50px 0;
 }
 
-.development {
+.navbar-inverse {
+  background-color: #28292B;
+  border-color: #080808;
+}
+
+a {
+  color: #EF483D;
+}
+
+a:focus, a:hover {
+  color: #D3251A;
+  text-decoration: underline;
+}
+
+h1.logo {
+    position: relative;
+    overflow:hidden;
+    padding: 0;
+}
+
+h1.logo a {
     position: absolute;
-    width: 149px;
-    height: 149px;
-    top: 0;
-    left: 0;
-    border: 0;
-    z-index: 1000;
-    background-image: url("../images/development_ribbon.png");
-    background-position: center center;
+    height: 0;
+    width: 330px;
+    background-position: left top;
     background-repeat: no-repeat;
 }
 
-.navbar-version {
-    font-size: 10px;
-    color: #ccc
+h1#logo {
+    height: 52px;
 }
 
-.browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+h1#logo a {
+    padding-top: 52px;
+    background-image: url(#{$image-base-path}logo.png);
+    text-indent: -9999px;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
+.btn, a, li>a{
+	transition-delay: 0s;
+	transition-duration: 0.5s;
+	transition-property: all;
+	transition-timing-function: ease;
+}
+.page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 0;
 }
 
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+.PostAJob{
+	float: right;
+	margin-top: 26px;
+	background-color: #EF483D;
+	color:white;
+	border: 0;
 }
 
-.error {
-    color: white;
-    background-color: red;
+.PostAJob:hover{
+	background-color: #FF584D;
+	color:white;
+	border: 0;
 }
 
-.hipster {
-    display: inline-block;
-    width: 347px;
-    height: 497px;
-    background: url("../images/hipster.png") no-repeat center top;
-    background-size: contain;
+#splash{
+	min-height: 230px;
+	background: #2d2e30 url("#{$image-base-path}main-bg.png");
+	border-top: 3px solid #EF483D;
+	position: relative;
+	margin-bottom: 40px;
 }
 
-/* wait autoprefixer update to allow simple generation of high pixel density media query */
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) {
-    .hipster {
-        background: url("../images/hipster2x.png") no-repeat center top;
-        background-size: contain;
-    }
+#splash-with-image{
+	min-height: 290px;
+	background: #3b3031 url(#{$image-base-path}main-img-bg.png) no-repeat 50% 63%;
+	border-top: 3px solid #EF483D;
+	position: relative;
+	margin-bottom: 40px;
+	padding-top: 33px;
 }
 
-/* make sure browsers use the pointer cursor for anchors, even with no href */
+.announcement{
+	
+}
+
+.announcement-icon{
+	float: left;
+	margin-top: 50px;
+	margin-left: 100px;
+}
+
+.announcement span {
+	font-family: 'Lobster', cursive;
+	color: white;
+	height: 230px;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 34px;
+	line-height: 48px;
+	padding: 20px 100px;
+	text-align: center;
+}
+
+.well {
+	float: left;
+	background-color: white;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.lead {
+	margin-bottom: 8px;
+	font-size: 18px;
+}
+
+h2.title{
+	margin-top: 0;
+	font-size: 24px;
+}
+
+.btn-primary {
+	background-color: #EF483D;
+	border: 0;
+}
+
+.btn-primary:hover {
+  background-color: #FF584D;
+  border:0;
+}
+
+.navigation{
+	width: 100%;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+color: #fff;
+background-color: #EF483D;
+}
+
+.margintop20 {
+    margin-top:20px;
+}
+
+.nav-pills>li>a {
+border-radius: 4px;
+}
+
+a {
+color: #000;
+text-decoration: none;
+}
+
 a:hover {
-  cursor: pointer;
+color: #EF483D;
+text-decoration: none;
 }
 
-
-/* start Password strength bar style */
-ul#strength {
-    display:inline;
-    list-style:none;
-    margin:0;
-    margin-left:15px;
-    padding:0;
-    vertical-align:2px;
+.well h4{
+	margin-top: 0px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+}
+.nav-stacked>li+li {
+margin-top: 0px;
+margin-left: 0;
+border-bottom:1px solid #dadada;
+border-left:1px solid #dadada;
+border-right:1px solid #dadada;
+	border:none;
 }
 
-.point:last {
-    margin:0 !important;
+.active2 {
+    border-left:4px solid #428bca;
 }
-.point {
-    background:#DDD;
-    border-radius:2px;
-    display:inline-block;
-    height:5px;
-    margin-right:1px;
-    width:20px;
+
+.pager li>a:focus, .pager li>a:hover {
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #EF483D;
 }
-/* end Password strength bar style */
+
+@media (max-width: 992px){
+.announcement span {
+  float: left;
+  text-align: center;
+}
+.announcement-icon {
+  float: none;
+  margin-top: 50px;
+  margin-left: 0px;
+}
+.annonceIcon{
+	text-align: center;
+}
+.announcement span {
+  padding: 30px 0px;
+}
+}

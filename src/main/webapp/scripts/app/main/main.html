@@ -1,43 +1,67 @@
-<div ng-cloak>
-    <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div>
-        <div class="col-md-8">
-            <h1 translate="main.title">Welcome, Java Hipster!</h1>
-            <p class="lead" translate="main.subtitle">This is your homepage</p>
+<div class="row">
 
-            <div ng-switch="isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true"
-                     translate="main.logged.message" translate-values="{username: '{{account.login}}'}">
-                    You are logged in as user "Admin".
-                </div>
+	<!-- Blog Sidebar Widgets Column -->
+	<div class="col-md-3">
 
-                <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.authenticated">
-                    If you want to <a href="#/login">authenticate</a>, you can try the default login="admin" and
-                    password="admin".
-                </div>
+		<!-- Blog Search Well -->
+		<div class="well">
+			<h4>Search</h4>
+			<div class="input-group">
+				<input type="text" class="form-control"> <span
+					class="input-group-btn">
+					<button class="btn btn-default" type="button">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</span>
+			</div>
+			<!-- /.input-group -->
+		</div>
 
-                <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.register">
-                    Don't have an account? <a href=\"#/register\">Register</a>
-                </div>
+		<div class="well navigation">
+			<h4>Location</h4>
+			<ul class="nav nav-pills nav-stacked">
+				<li class="active"><a href="#"><span
+						class="glyphicon glyphicon-ok"></span> Europe (10)</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-minus"></span>
+						US (3)</a></li>
+
+			</ul>
+		</div>
+
+		<!-- Side Widget Well -->
+		<div class="well">
+			<h4>Title Here</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+				Inventore, perspiciatis adipisci accusamus laudantium odit aliquam
+				repellat tempore quos aspernatur vero.</p>
+		</div>
+
+	</div>
+
+	<!-- Blog Entries Column -->
+	<div class="col-md-9">
+        <div ng-switch="isAuthenticated()">
+            <div ng-switch-when="true">
+                <div has-role="ROLE_RECRUITER" ui-view="applicants"></div>
             </div>
-
-            <p translate="main.question">
-                If you have any question on JHipster:
-            </p>
-
-            <ul>
-                <li><a href="http://jhipster.github.io/" target="_blank" translate="main.link.homepage">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" translate="main.link.stackoverflow">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" translate="main.link.bugtracker">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" translate="main.link.chat">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank"  translate="main.link.contact">contact @java_hipster on Twitter</a></li>
-            </ul>
-
-            <p>
-             <span translate="main.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" translate="main.github">Github</a>!
-            </p>
         </div>
-    </div>
+        <div ng-switch="isRecruiter">
+            <div ng-switch-when="false">
+                <div ui-view="jobList"></div>
+            </div>
+        </div>
+
+
+		<!-- Pager -->
+		<ul class="pager">
+			<li class="previous"><a href="#">&larr; Older</a></li>
+			<li class="next"><a href="#">Newer &rarr;</a></li>
+		</ul>
+
+	</div>
+
 </div>
+<!-- /.row -->
+
+<hr>
+
