@@ -1,0 +1,23 @@
+{
+    "boardatjobApp": {
+        "userProfile" : {
+            "home": {
+                "title": "UserProfiles",
+                "createLabel": "Create a new UserProfile",
+                "createOrEditLabel": "Create or edit a UserProfile"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete UserProfile {{ id }}?"
+            },
+            "detail": {
+                "title": "UserProfile"
+            },
+            "email": "Email",
+            "name": "Name",
+            "phoneNumber": "PhoneNumber",
+            "resume": "Resume",
+            "jobApplication": "jobApplication",
+            "company": "company"
+        }
+    }
+}

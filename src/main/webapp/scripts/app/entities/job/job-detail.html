@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="boardatjobApp.job.detail.title">Job</span> {{job.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.job.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{job.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.job.title">Title</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{job.title}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.job.responsibilities">Responsibilities</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{job.responsibilities}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.job.requirements">Requirements</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{job.requirements}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.job.date">Date</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{job.date}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.job.company">company</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{job.company.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="job"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

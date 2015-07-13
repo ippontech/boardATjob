@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="boardatjobApp.userProfile.detail.title">UserProfile</span> {{userProfile.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.userProfile.email">Email</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userProfile.email}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.userProfile.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userProfile.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.userProfile.phoneNumber">PhoneNumber</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userProfile.phoneNumber}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.userProfile.resume">Resume</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userProfile.resume}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="userProfile"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

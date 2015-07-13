@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity JobApplication.
+    -->
+    <changeSet id="20150713140425" author="jhipster">
+        <createTable tableName="JOBAPPLICATION">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cover_letter" type="varchar(255)"/>
+            <column name="job_id" type="bigint"/>
+            <column name="userprofile_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="job_id"
+                                 baseTableName="JOBAPPLICATION"
+                                 constraintName="fk_jobapplication_job_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="JOB"/>
+
+        <addForeignKeyConstraint baseColumnNames="userprofile_id"
+                                 baseTableName="JOBAPPLICATION"
+                                 constraintName="fk_jobapplication_userprofile_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="USERPROFILE"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,69 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "job",
+      "relationshipNameCapitalized": "Job",
+      "relationshipFieldName": "job",
+      "otherEntityName": "job",
+      "relationshipType": "one-to-many",
+      "otherEntityNameCapitalized": "Job",
+      "otherEntityRelationshipName": "company"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "userProfile",
+      "relationshipNameCapitalized": "UserProfile",
+      "relationshipFieldName": "userProfile",
+      "otherEntityName": "userProfile",
+      "otherEntityNameCapitalized": "UserProfile",
+      "relationshipType": "one-to-one",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "company"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldNameCapitalized": "Name",
+      "fieldNameUnderscored": "name",
+      "fieldInJavaBeanMethod": "Name",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "description",
+      "fieldNameCapitalized": "Description",
+      "fieldNameUnderscored": "description",
+      "fieldInJavaBeanMethod": "Description",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "location",
+      "fieldNameCapitalized": "Location",
+      "fieldNameUnderscored": "location",
+      "fieldInJavaBeanMethod": "Location",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    }
+  ],
+  "fieldsContainOwnerOneToOne": false,
+  "fieldsContainOwnerManyToMany": false,
+  "fieldsContainOneToMany": true,
+  "fieldsContainLocalDate": false,
+  "fieldsContainCustomTime": false,
+  "fieldsContainBigDecimal": false,
+  "fieldsContainDateTime": false,
+  "fieldsContainDate": false,
+  "changelogDate": "20150713140425",
+  "dto": "no",
+  "pagination": "no",
+  "validation": false
+}

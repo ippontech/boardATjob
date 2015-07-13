@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="boardatjobApp.jobApplication.detail.title">JobApplication</span> {{jobApplication.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.jobApplication.coverLetter">CoverLetter</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{jobApplication.coverLetter}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.jobApplication.job">job</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{jobApplication.job.id}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="boardatjobApp.jobApplication.userProfile">userProfile</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{jobApplication.userProfile.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="jobApplication"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

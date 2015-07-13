@@ -1,0 +1,22 @@
+{
+    "boardatjobApp": {
+        "company" : {
+            "home": {
+                "title": "Companys",
+                "createLabel": "Create a new Company",
+                "createOrEditLabel": "Create or edit a Company"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Company {{ id }}?"
+            },
+            "detail": {
+                "title": "Company"
+            },
+            "name": "Name",
+            "description": "Description",
+            "location": "Location",
+            "job": "job",
+            "userProfile": "userProfile"
+        }
+    }
+}

@@ -1,0 +1,78 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "jobApplication",
+      "relationshipNameCapitalized": "JobApplication",
+      "relationshipFieldName": "jobApplication",
+      "otherEntityName": "jobApplication",
+      "relationshipType": "one-to-many",
+      "otherEntityNameCapitalized": "JobApplication",
+      "otherEntityRelationshipName": "userProfile"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "company",
+      "relationshipNameCapitalized": "Company",
+      "relationshipFieldName": "company",
+      "otherEntityName": "company",
+      "relationshipType": "one-to-one",
+      "otherEntityNameCapitalized": "Company",
+      "ownerSide": true
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "email",
+      "fieldNameCapitalized": "Email",
+      "fieldNameUnderscored": "email",
+      "fieldInJavaBeanMethod": "Email",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "name",
+      "fieldNameCapitalized": "Name",
+      "fieldNameUnderscored": "name",
+      "fieldInJavaBeanMethod": "Name",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "phoneNumber",
+      "fieldNameCapitalized": "PhoneNumber",
+      "fieldNameUnderscored": "phone_number",
+      "fieldInJavaBeanMethod": "PhoneNumber",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "resume",
+      "fieldNameCapitalized": "Resume",
+      "fieldNameUnderscored": "resume",
+      "fieldInJavaBeanMethod": "Resume",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    }
+  ],
+  "fieldsContainOwnerOneToOne": true,
+  "fieldsContainOwnerManyToMany": false,
+  "fieldsContainOneToMany": true,
+  "fieldsContainLocalDate": false,
+  "fieldsContainCustomTime": false,
+  "fieldsContainBigDecimal": false,
+  "fieldsContainDateTime": false,
+  "fieldsContainDate": false,
+  "changelogDate": "20150713140425",
+  "dto": "no",
+  "pagination": "no",
+  "validation": false
+}

@@ -1,0 +1,21 @@
+{
+    "boardatjobApp": {
+        "jobApplication" : {
+            "home": {
+                "title": "JobApplications",
+                "createLabel": "Créer un nouveau JobApplication",
+                "createOrEditLabel": "Créer ou éditer un JobApplication"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le JobApplication {{ id }} ?"
+            },
+            "detail": {
+                "title": "JobApplication"
+            },
+            "coverLetter": "CoverLetter",
+            "job": "job",
+            "userProfile": "userProfile"
+        }
+    }
+}
+

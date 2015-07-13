@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "baseName": "boardatjob",
+    "packageName": "com.ippon.boardatjob",
+    "packageFolder": "com/ippon/boardatjob",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "useCompass": true,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "rememberMeKey": "8bf4f8ab40215999d7b65993e6be7dfdf0db3012"
+  }
+}

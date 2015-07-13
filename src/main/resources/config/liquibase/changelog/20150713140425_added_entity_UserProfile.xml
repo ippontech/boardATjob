@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity UserProfile.
+    -->
+    <changeSet id="20150713140425" author="jhipster">
+        <createTable tableName="USERPROFILE">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="phone_number" type="varchar(255)"/>
+            <column name="resume" type="varchar(255)"/>
+            <column name="company_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="USERPROFILE"
+                                 constraintName="fk_userprofile_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="COMPANY"/>
+
+    </changeSet>
+</databaseChangeLog>

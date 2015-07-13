@@ -1,0 +1,48 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "job",
+      "relationshipNameCapitalized": "Job",
+      "relationshipFieldName": "job",
+      "otherEntityName": "job",
+      "otherEntityNameCapitalized": "Job",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "userProfile",
+      "relationshipNameCapitalized": "UserProfile",
+      "relationshipFieldName": "userProfile",
+      "otherEntityName": "userProfile",
+      "otherEntityNameCapitalized": "UserProfile",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "coverLetter",
+      "fieldNameCapitalized": "CoverLetter",
+      "fieldNameUnderscored": "cover_letter",
+      "fieldInJavaBeanMethod": "CoverLetter",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    }
+  ],
+  "fieldsContainOwnerOneToOne": false,
+  "fieldsContainOwnerManyToMany": false,
+  "fieldsContainOneToMany": false,
+  "fieldsContainLocalDate": false,
+  "fieldsContainCustomTime": false,
+  "fieldsContainBigDecimal": false,
+  "fieldsContainDateTime": false,
+  "fieldsContainDate": false,
+  "changelogDate": "20150713140425",
+  "dto": "no",
+  "pagination": "no",
+  "validation": false
+}

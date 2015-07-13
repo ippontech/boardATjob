@@ -1,0 +1,88 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "company",
+      "relationshipNameCapitalized": "Company",
+      "relationshipFieldName": "company",
+      "otherEntityName": "company",
+      "otherEntityNameCapitalized": "Company",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "jobApplication",
+      "relationshipNameCapitalized": "JobApplication",
+      "relationshipFieldName": "jobApplication",
+      "otherEntityName": "jobApplication",
+      "relationshipType": "one-to-many",
+      "otherEntityNameCapitalized": "JobApplication",
+      "otherEntityRelationshipName": "job"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "description",
+      "fieldNameCapitalized": "Description",
+      "fieldNameUnderscored": "description",
+      "fieldInJavaBeanMethod": "Description",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "title",
+      "fieldNameCapitalized": "Title",
+      "fieldNameUnderscored": "title",
+      "fieldInJavaBeanMethod": "Title",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "responsibilities",
+      "fieldNameCapitalized": "Responsibilities",
+      "fieldNameUnderscored": "responsibilities",
+      "fieldInJavaBeanMethod": "Responsibilities",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "requirements",
+      "fieldNameCapitalized": "Requirements",
+      "fieldNameUnderscored": "requirements",
+      "fieldInJavaBeanMethod": "Requirements",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "date",
+      "fieldNameCapitalized": "Date",
+      "fieldNameUnderscored": "date",
+      "fieldInJavaBeanMethod": "Date",
+      "fieldValidate": false,
+      "fieldType": "String",
+      "fieldIsEnum": false
+    }
+  ],
+  "fieldsContainOwnerOneToOne": false,
+  "fieldsContainOwnerManyToMany": false,
+  "fieldsContainOneToMany": true,
+  "fieldsContainLocalDate": false,
+  "fieldsContainCustomTime": false,
+  "fieldsContainBigDecimal": false,
+  "fieldsContainDateTime": false,
+  "fieldsContainDate": false,
+  "changelogDate": "20150713140425",
+  "dto": "no",
+  "pagination": "no",
+  "validation": false
+}
