@@ -52,7 +52,7 @@
         <sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 
-        <sonar.exclusions>src/main/webapp/assets/**.*</sonar.exclusions>
+        <sonar.exclusions>src/main/webapp/assets/**/*.*, src/main/webapp/bower_components/**/*.*</sonar.exclusions>
         <sonar.jacoco.itReportPath>${project.testresult.directory}/coverage/jacoco/jacoco-it.exec</sonar.jacoco.itReportPath>
         <sonar.jacoco.reportPath>${project.testresult.directory}/coverage/jacoco/jacoco.exec</sonar.jacoco.reportPath>
         <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
