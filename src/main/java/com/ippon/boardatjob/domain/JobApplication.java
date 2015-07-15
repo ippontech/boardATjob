@@ -1,9 +1,13 @@
 package com.ippon.boardatjob.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,9 +29,11 @@ public class JobApplication implements Serializable {
     private String coverLetter;
 
     @ManyToOne
+    @Field( type = FieldType.Nested)
     private Job job;
 
     @ManyToOne
+    @Field( type = FieldType.Nested)
     private UserProfile userProfile;
 
     public Long getId() {

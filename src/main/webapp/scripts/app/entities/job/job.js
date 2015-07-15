@@ -7,7 +7,7 @@ angular.module('boardatjobApp')
                 parent: 'entity',
                 url: '/job',
                 data: {
-                    roles: ['ROLE_USER'],
+                    roles: [],
                     pageTitle: 'boardatjobApp.job.home.title'
                 },
                 views: {
@@ -27,7 +27,7 @@ angular.module('boardatjobApp')
                 parent: 'entity',
                 url: '/job/:id',
                 data: {
-                    roles: ['ROLE_USER'],
+                    roles: [],
                     pageTitle: 'boardatjobApp.job.detail.title'
                 },
                 views: {

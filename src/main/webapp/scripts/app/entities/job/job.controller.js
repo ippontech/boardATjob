@@ -1,16 +1,32 @@
 'use strict';
 
 angular.module('boardatjobApp')
-    .controller('JobController', function ($scope, Job, Company, JobApplication, JobSearch) {
+    .controller('JobController', function ($scope, Job, Company, ParseLinks, Principal, JobApplication, JobSearch, JobAggregations) {
+        $scope.isAuthenticated = Principal.isAuthenticated;
+        $scope.searchQuery = "";
         $scope.jobs = [];
         $scope.companys = Company.query();
         $scope.jobapplications = JobApplication.query();
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Job.query(function(result) {
-               $scope.jobs = result;
+            Job.query({page: $scope.page, per_page: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                for (var i = 0; i < result.length; i++) {
+                    $scope.jobs.push(result[i]);
+                }
             });
         };
-        $scope.loadAll();
+        $scope.reset = function() {
+            $scope.page = 1;
+            $scope.jobs = [];
+            $scope.searchQuery = '';
+            $scope.loadAll();
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
+        };
+        $scope.reset();
 
         $scope.showUpdate = function (id) {
             Job.get({id: id}, function(result) {
@@ -43,7 +59,7 @@ angular.module('boardatjobApp')
         $scope.confirmDelete = function (id) {
             Job.delete({id: id},
                 function () {
-                    $scope.loadAll();
+                    $scope.reset();
                     $('#deleteJobConfirmation').modal('hide');
                     $scope.clear();
                 });
@@ -51,6 +67,7 @@ angular.module('boardatjobApp')
 
         $scope.search = function () {
             JobSearch.query({query: $scope.searchQuery}, function(result) {
+            	console.log(result);
                 $scope.jobs = result;
             }, function(response) {
                 if(response.status === 404) {
@@ -60,7 +77,7 @@ angular.module('boardatjobApp')
         };
 
         $scope.refresh = function () {
-            $scope.loadAll();
+            $scope.reset();
             $('#saveJobModal').modal('hide');
             $scope.clear();
         };

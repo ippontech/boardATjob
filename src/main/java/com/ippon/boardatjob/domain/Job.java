@@ -1,13 +1,33 @@
 package com.ippon.boardatjob.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
+import org.neo4j.cypher.internal.compiler.v2_1.planner.logical.steps.aggregation;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.ippon.boardatjob.domain.util.CustomDateTimeDeserializer;
+import com.ippon.boardatjob.domain.util.CustomDateTimeSerializer;
 
 /**
  * A Job.
@@ -33,10 +53,15 @@ public class Job implements Serializable {
     @Column(name = "requirements")
     private String requirements;
 
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Column(name = "date")
-    private String date;
+    private DateTime date;
 
     @ManyToOne
+    @Field( type = FieldType.Nested)
+    @Fetch(FetchMode.JOIN)
     private Company company;
 
     @OneToMany(mappedBy = "job")
@@ -83,11 +108,11 @@ public class Job implements Serializable {
         this.requirements = requirements;
     }
 
-    public String getDate() {
+    public DateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(DateTime date) {
         this.date = date;
     }
 
