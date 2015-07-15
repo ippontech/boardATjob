@@ -5,10 +5,13 @@ import com.ippon.boardatjob.domain.Job;
 import com.ippon.boardatjob.repository.JobRepository;
 import com.ippon.boardatjob.repository.search.JobSearchRepository;
 
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import static org.hamcrest.Matchers.hasItem;
+
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -22,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -47,8 +51,8 @@ public class JobResourceTest {
     private static final String UPDATED_RESPONSIBILITIES = "UPDATED_TEXT";
     private static final String DEFAULT_REQUIREMENTS = "SAMPLE_TEXT";
     private static final String UPDATED_REQUIREMENTS = "UPDATED_TEXT";
-    private static final String DEFAULT_DATE = "SAMPLE_TEXT";
-    private static final String UPDATED_DATE = "UPDATED_TEXT";
+    private static final DateTime DEFAULT_DATE = new DateTime();
+    private static final DateTime UPDATED_DATE = new DateTime().plusHours(1);
 
     @Inject
     private JobRepository jobRepository;
