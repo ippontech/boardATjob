@@ -79,7 +79,6 @@ public class UserProfileResourceTest {
         userProfile.setEmail(DEFAULT_EMAIL);
         userProfile.setName(DEFAULT_NAME);
         userProfile.setPhoneNumber(DEFAULT_PHONE_NUMBER);
-        userProfile.setResume(DEFAULT_RESUME);
     }
 
     @Test
@@ -100,7 +99,6 @@ public class UserProfileResourceTest {
         assertThat(testUserProfile.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testUserProfile.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testUserProfile.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
-        assertThat(testUserProfile.getResume()).isEqualTo(DEFAULT_RESUME);
     }
 
     @Test
@@ -116,8 +114,7 @@ public class UserProfileResourceTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(userProfile.getId().intValue())))
                 .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER.toString())))
-                .andExpect(jsonPath("$.[*].resume").value(hasItem(DEFAULT_RESUME.toString())));
+                .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER.toString())));
     }
 
     @Test
@@ -133,8 +130,7 @@ public class UserProfileResourceTest {
             .andExpect(jsonPath("$.id").value(userProfile.getId().intValue()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER.toString()))
-            .andExpect(jsonPath("$.resume").value(DEFAULT_RESUME.toString()));
+            .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER.toString()));
     }
 
     @Test
@@ -157,7 +153,6 @@ public class UserProfileResourceTest {
         userProfile.setEmail(UPDATED_EMAIL);
         userProfile.setName(UPDATED_NAME);
         userProfile.setPhoneNumber(UPDATED_PHONE_NUMBER);
-        userProfile.setResume(UPDATED_RESUME);
         restUserProfileMockMvc.perform(put("/api/userProfiles")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(userProfile)))
@@ -170,7 +165,6 @@ public class UserProfileResourceTest {
         assertThat(testUserProfile.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testUserProfile.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testUserProfile.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
-        assertThat(testUserProfile.getResume()).isEqualTo(UPDATED_RESUME);
     }
 
     @Test

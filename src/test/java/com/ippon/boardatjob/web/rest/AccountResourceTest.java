@@ -1,14 +1,24 @@
 package com.ippon.boardatjob.web.rest;
 
-import com.ippon.boardatjob.Application;
-import com.ippon.boardatjob.domain.Authority;
-import com.ippon.boardatjob.domain.User;
-import com.ippon.boardatjob.repository.AuthorityRepository;
-import com.ippon.boardatjob.repository.UserRepository;
-import com.ippon.boardatjob.security.AuthoritiesConstants;
-import com.ippon.boardatjob.service.MailService;
-import com.ippon.boardatjob.service.UserService;
-import com.ippon.boardatjob.web.rest.dto.UserDTO;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Matchers.anyObject;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,21 +33,16 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.ippon.boardatjob.Application;
+import com.ippon.boardatjob.domain.Authority;
+import com.ippon.boardatjob.domain.User;
+import com.ippon.boardatjob.repository.AuthorityRepository;
+import com.ippon.boardatjob.repository.UserProfileRepository;
+import com.ippon.boardatjob.repository.UserRepository;
+import com.ippon.boardatjob.security.AuthoritiesConstants;
+import com.ippon.boardatjob.service.MailService;
+import com.ippon.boardatjob.service.UserService;
+import com.ippon.boardatjob.web.rest.dto.UserDTO;
 
 /**
  * Test class for the AccountResource REST controller.
@@ -52,6 +57,9 @@ public class AccountResourceTest {
 
     @Inject
     private UserRepository userRepository;
+
+    @Inject
+    private UserProfileRepository userProfileRepository;
 
     @Inject
     private AuthorityRepository authorityRepository;
@@ -76,11 +84,13 @@ public class AccountResourceTest {
 
         AccountResource accountResource = new AccountResource();
         ReflectionTestUtils.setField(accountResource, "userRepository", userRepository);
+        ReflectionTestUtils.setField(accountResource, "userProfileRepository", userProfileRepository);
         ReflectionTestUtils.setField(accountResource, "userService", userService);
         ReflectionTestUtils.setField(accountResource, "mailService", mockMailService);
 
         AccountResource accountUserMockResource = new AccountResource();
         ReflectionTestUtils.setField(accountUserMockResource, "userRepository", userRepository);
+        ReflectionTestUtils.setField(accountUserMockResource, "userProfileRepository", userProfileRepository);
         ReflectionTestUtils.setField(accountUserMockResource, "userService", mockUserService);
         ReflectionTestUtils.setField(accountUserMockResource, "mailService", mockMailService);
 
@@ -153,6 +163,7 @@ public class AccountResourceTest {
             "Shmoe",                // lastName
             "joe@example.com",      // e-mail
             "en",                   // langKey
+            AuthoritiesConstants.USER,
             Arrays.asList(AuthoritiesConstants.USER)
         );
 
@@ -176,6 +187,7 @@ public class AccountResourceTest {
             "One",                  // lastName
             "funky@example.com",    // e-mail
             "en",                   // langKey
+            null,
             Arrays.asList(AuthoritiesConstants.USER)
         );
 
@@ -199,6 +211,7 @@ public class AccountResourceTest {
             "Green",            // lastName
             "invalid",          // e-mail <-- invalid
             "en",               // langKey
+            null,
             Arrays.asList(AuthoritiesConstants.USER)
         );
 
@@ -223,12 +236,13 @@ public class AccountResourceTest {
             "Something",            // lastName
             "alice@example.com",    // e-mail
             "en",                   // langKey
+            null,
             Arrays.asList(AuthoritiesConstants.USER)
         );
 
         // Duplicate login, different e-mail
         UserDTO dup = new UserDTO(u.getLogin(), u.getPassword(), u.getLogin(), u.getLastName(),
-            "alicejr@example.com", u.getLangKey(), u.getRoles());
+            "alicejr@example.com", u.getLangKey(), u.getRoleSelection(), u.getRoles());
 
         // Good user
         restMvc.perform(
@@ -259,12 +273,13 @@ public class AccountResourceTest {
             "Doe",                  // lastName
             "john@example.com",     // e-mail
             "en",                   // langKey
+            null,
             Arrays.asList(AuthoritiesConstants.USER)
         );
 
         // Duplicate e-mail, different login
         UserDTO dup = new UserDTO("johnjr", u.getPassword(), u.getLogin(), u.getLastName(),
-            u.getEmail(), u.getLangKey(), u.getRoles());
+            u.getEmail(), u.getLangKey(), u.getRoleSelection(), u.getRoles());
 
         // Good user
         restMvc.perform(
@@ -294,6 +309,7 @@ public class AccountResourceTest {
             "Guy",                  // lastName
             "badguy@example.com",   // e-mail
             "en",                   // langKey
+            null,
             Arrays.asList(AuthoritiesConstants.ADMIN) // <-- only admin should be able to do that
         );
 
