@@ -5,6 +5,7 @@
         "menu": {
             "home": "Home",
             "mycompany": "My Company",
+            "recruiterjobs": "Job Listings",
             "entities": {
                 "main": "Entities",
                 "company": "Company",

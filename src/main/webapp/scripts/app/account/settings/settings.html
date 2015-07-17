@@ -90,7 +90,7 @@
 				</div>
 				<button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="settings.form.button">Save</button>
             </form>
-            <form method="POST" ng-show="isJobSeeker()">
+            <form method="POST" ng-show="showResume()">
 	            <div class="row">
 					<h2>Resume</h2>
 					<div class="col-xs-12 alert alert-success" ng-show="uploadSuccess">

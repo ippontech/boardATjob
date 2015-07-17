@@ -59,6 +59,10 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale',
         	//console.log($state.current);
         	return !Principal.isAuthenticated() && $state.current.name == 'home';
         }
+        
+        $rootScope.formatDate = function(dt) {
+        	return moment(dt).format('MMMM Do YYYY, h:mm:ss a');
+        }
     })
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, $translateProvider, tmhDynamicLocaleProvider, httpRequestInterceptorCacheBusterProvider) {
 

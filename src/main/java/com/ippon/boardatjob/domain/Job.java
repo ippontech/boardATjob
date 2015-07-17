@@ -47,6 +47,9 @@ public class Job implements Serializable {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "location")
+    private String location;
+
     @Column(name = "responsibilities")
     private String responsibilities;
 
@@ -92,7 +95,15 @@ public class Job implements Serializable {
         this.title = title;
     }
 
-    public String getResponsibilities() {
+    public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getResponsibilities() {
         return responsibilities;
     }
 

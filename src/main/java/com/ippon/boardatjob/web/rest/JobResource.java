@@ -118,6 +118,16 @@ public class JobResource {
 	}
 
 	/**
+	 * GET /jobs/:id -> get the "id" job.
+	 */
+	@RequestMapping(value = "/jobs/bycompany/{companyId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Job> getByCompany(@PathVariable Long companyId) {
+		log.debug("REST request to get Job : {}", companyId);
+		return jobRepository.findAllByCompanyId(companyId);
+	}
+
+	/**
 	 * DELETE /jobs/:id -> delete the "id" job.
 	 */
 	@RequestMapping(value = "/jobs/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)

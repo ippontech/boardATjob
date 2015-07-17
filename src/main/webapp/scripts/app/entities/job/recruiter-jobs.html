@@ -1,0 +1,23 @@
+
+
+<div class="row" ng-repeat="job in jobs">
+
+	<div class="well col-xs-12">
+		<h2 class="title">
+			<a ui-sref="jobCreate({id:job.id})">{{job.title}}</a> <span
+				class="lead"> 
+				<a ui-sref="mycompany()">{{job.company.name}}</a>
+			</span>
+		</h2>
+		<p>
+			<span class="glyphicon glyphicon-globe"></span> {{job.location}} <span
+				class="glyphicon glyphicon-time"></span> {{formatDate(job.date)}}
+		</p>
+		<p>{{job.description}}</p>
+		<a class="btn btn-primary pull-right"
+			ui-sref="jobCreate({id:job.id})">Edit <span
+			class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
+
+</div>

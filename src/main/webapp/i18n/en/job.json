@@ -15,6 +15,7 @@
             },
             "description": "Description",
             "title": "Title",
+            "location": "Location",
             "responsibilities": "Responsibilities",
             "requirements": "Requirements",
             "date": "Date",

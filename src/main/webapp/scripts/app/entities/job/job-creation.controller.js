@@ -1,12 +1,25 @@
 angular.module('boardatjobApp')
-    .controller('JobCreateController', function($scope, $state, Company, Job, Principal, UserProfile) {
+    .controller('JobCreateController', function($scope, $state, $stateParams, Company, Job, Principal, UserProfile) {
         $scope.$state = $state;
+        
+        $scope.load = function(jobId) {
+        	Job.get({id: jobId}, function(result) {
+        		$scope.job = result;
+        	});
+        };
+        console.log($stateParams.id);
+        if ($stateParams.id) {
+        	$scope.load($stateParams.id);
+        }
+        
         $scope.save = function () {
             if ($scope.job.id != null) {
                 Job.update($scope.job,
                     function (res) {
-                        $scope.clear();
-                        $scope.$state.go('jobDetail', {id: job.id});
+                        $scope.success = 'OK';
+                        setTimeout(function() {
+                        	$scope.success = null;
+                        }, 3000);
                     });
             } else {
             	$scope.job.company = {

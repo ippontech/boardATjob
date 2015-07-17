@@ -64,7 +64,4 @@ angular.module('boardatjobApp')
             //$scope.editForm.$setUntouched();
         };
         
-        $scope.formatDate = function(dt) {
-        	return moment(dt).format('MMMM Do YYYY, h:mm:ss a');
-        }
     });

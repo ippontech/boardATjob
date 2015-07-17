@@ -11,6 +11,15 @@ angular.module('boardatjobApp')
                     return data;
                 }
             },
+            'getByCompany': {
+            	url: 'api/jobs/bycompany/:companyId',
+            	isArray: true,
+            	method: 'GET',
+                transformResponse: function (data) {
+                    data = angular.fromJson(data);
+                    return data;
+                }
+            },
             'update': { method:'PUT' }
         });
     });

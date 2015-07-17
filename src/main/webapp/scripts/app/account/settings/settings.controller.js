@@ -15,7 +15,7 @@ angular.module('boardatjobApp')
             UserProfile.getByLogin({login: account.login}, function(result) {
             	console.log('Here.. Loaded profile: ',result);
                 $scope.profile = result;
-                //$scope.showResume();
+                
             });
         });
 
@@ -32,9 +32,14 @@ angular.module('boardatjobApp')
                         $translate.use($scope.settingsAccount.langKey);
                     }
                 });
-                console.log('saving profile ', $scope.profile);
-                UserProfile.update($scope.profile);
-                
+                //console.log('saving profile ', $scope.profile);
+                //UserProfile.update($scope.profile);
+                // refresh profile
+                UserProfile.getByLogin({login: $scope.settingsAccount.login}, function(result) {
+                	console.log('Here.. refreshed profile: ',result);
+                    $scope.profile = result;
+                    
+                });
             }).catch(function() {
                 $scope.success = null;
                 $scope.error = 'ERROR';
@@ -74,15 +79,11 @@ angular.module('boardatjobApp')
         	return null;
         };
 
-        /*
+        
         $scope.showResume = function() {
-        	if ($scope.profile && $scope.profile.resumeDate) {
-	        	var pdf = new PDFObject({
-	        		  url: '/resume/download/' + $scope.profile.id + "/"
-	        		}).embed("resumePdf");
-        	}
+        	return $rootScope.isJobSeeker && $scope.profile && $scope.profile.id != null;
         };
-        */
+        
         
         $scope.clearSuccessMessage = function() {
         	setTimeout(function() {
