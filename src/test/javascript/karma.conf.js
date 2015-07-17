@@ -45,6 +45,24 @@ module.exports = function (config) {
         // list of files / patterns to exclude
         exclude: [],
 
+        preprocessors: {
+            './**/*.js': ['coverage']
+        },
+
+        reporters: ['dots', 'jenkins', 'coverage', 'progress'],
+
+        jenkinsReporter: {
+            outputFile: '../target/test-results/karma/TESTS-results.xml'
+        },
+
+        coverageReporter: {
+            dir: '../target/test-results/coverage',
+
+            reporters: [
+                {type: 'lcov', subdir: 'report-lcov'}
+            ]
+        },
+
         // web server port
         port: 9876,
 
@@ -64,6 +82,8 @@ module.exports = function (config) {
         // - PhantomJS
         // - IE (only Windows)
         browsers: ['PhantomJS'],
+
+        
 
         // Continuous Integration mode
         // if true, it capture browsers, run tests and exit
