@@ -1,0 +1,28 @@
+
+<div>
+    <h2><span translate="boardatjobApp.jobApplication.apply.title">Apply for </span> {{jobApplication.job.title}} at {{jobApplication.job.company.name}}</h2>
+    <div class="row">
+		<div class="col-xs-12">
+			<label translate="boardatjobApp.jobApplication.coverLetter">Cover Letter</label>
+			<textarea class="form-control col-xs-12" rows="20" ng-disabled="applied" ng-model="jobApplication.coverLetter"></textarea>
+		</div>
+	    <div class="col-xs-12">&nbsp;</div>
+    </div>
+
+    <div class="row">
+		<div class="col-xs-12 col-md-6">
+		    <button type="button"
+		            onclick="window.history.back()"
+		            class="btn btn-info">
+		        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+		    </button>
+		</div>
+		<div class="col-xs-12 col-md-6">
+			<button type="submit" ng-click="submitApplication()" class="btn btn-primary pull-right" ng-show="!applied">
+				<span translate="boardatjobApp.jobApplication.apply.submitApplication"> Submit Application</span>
+				<span class="glyphicon glyphicon-ok"></span>
+			</button>
+			<span ng-show="applied">Thank you for applying! Your resume is under review.</span>
+		</div>
+	</div>
+</div>

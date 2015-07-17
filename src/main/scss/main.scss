@@ -58,9 +58,9 @@ h1#logo a {
 	transition-timing-function: ease;
 }
 .page-header {
-  padding-bottom: 9px;
+  padding-bottom: 30px;
   margin: 40px 0 20px;
-  border-bottom: 0;
+  border-bottom: 2px outset #EF483D;
 }
 
 .PostAJob{
@@ -82,6 +82,7 @@ h1#logo a {
 	background: #2d2e30 url("#{$image-base-path}main-bg.png");
 	border-top: 3px solid #EF483D;
 	position: relative;
+    margin-top: -28px;
 	margin-bottom: 40px;
 }
 
@@ -90,6 +91,7 @@ h1#logo a {
 	background: #3b3031 url(#{$image-base-path}main-img-bg.png) no-repeat 50% 63%;
 	border-top: 3px solid #EF483D;
 	position: relative;
+    margin-top: -28px;
 	margin-bottom: 40px;
 	padding-top: 33px;
 }
@@ -210,3 +212,27 @@ border-right:1px solid #dadada;
   padding: 30px 0px;
 }
 }
+
+
+/* start Password strength bar style */
+ul#strength {
+    display:inline;
+    list-style:none;
+    margin:0;
+    margin-left:15px;
+    padding:0;
+    vertical-align:2px;
+}
+
+.point:last {
+    margin:0 !important;
+}
+.point {
+    background:#DDD;
+    border-radius:2px;
+    display:inline-block;
+    height:5px;
+    margin-right:1px;
+    width:20px;
+}
+/* end Password strength bar style */

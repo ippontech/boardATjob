@@ -1,30 +1,41 @@
 package com.ippon.boardatjob.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.ippon.boardatjob.domain.Authority;
-import com.ippon.boardatjob.domain.PersistentToken;
-import com.ippon.boardatjob.domain.User;
-import com.ippon.boardatjob.repository.PersistentTokenRepository;
-import com.ippon.boardatjob.repository.UserRepository;
-import com.ippon.boardatjob.security.SecurityUtils;
-import com.ippon.boardatjob.service.MailService;
-import com.ippon.boardatjob.service.UserService;
-import com.ippon.boardatjob.web.rest.dto.UserDTO;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.*;
-import java.util.stream.Collectors;
+import com.codahale.metrics.annotation.Timed;
+import com.ippon.boardatjob.domain.Authority;
+import com.ippon.boardatjob.domain.PersistentToken;
+import com.ippon.boardatjob.domain.User;
+import com.ippon.boardatjob.domain.UserProfile;
+import com.ippon.boardatjob.repository.PersistentTokenRepository;
+import com.ippon.boardatjob.repository.UserProfileRepository;
+import com.ippon.boardatjob.repository.UserRepository;
+import com.ippon.boardatjob.security.SecurityUtils;
+import com.ippon.boardatjob.service.MailService;
+import com.ippon.boardatjob.service.UserService;
+import com.ippon.boardatjob.web.rest.dto.UserDTO;
 
 /**
  * REST controller for managing the current user's account.
@@ -40,6 +51,9 @@ public class AccountResource {
 
     @Inject
     private UserService userService;
+    
+    @Inject
+    private UserProfileRepository userProfileRepository;
 
     @Inject
     private PersistentTokenRepository persistentTokenRepository;
@@ -62,12 +76,17 @@ public class AccountResource {
                 .orElseGet(() -> {
                     User user = userService.createUserInformation(userDTO.getLogin(), userDTO.getPassword(),
                     userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail().toLowerCase(),
-                    userDTO.getLangKey());
+                    userDTO.getLangKey(), userDTO.getRoleSelection());
                     String baseUrl = request.getScheme() + // "http"
                     "://" +                                // "://"
                     request.getServerName() +              // "myhost"
                     ":" +                                  // ":"
                     request.getServerPort();               // "80"
+                    
+                    UserProfile profile = new UserProfile();
+                    profile.setLogin(userDTO.getLogin());
+                    profile.setEmail(user.getEmail());
+                    userProfileRepository.save(profile);
 
                     mailService.sendActivationEmail(user, baseUrl);
                     return new ResponseEntity<>(HttpStatus.CREATED);
@@ -136,6 +155,15 @@ public class AccountResource {
             .map(u -> {
                 userService.updateUserInformation(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(),
                     userDTO.getLangKey());
+                // update user profile
+                UserProfile profile = userProfileRepository.findOneByLogin(userDTO.getLogin());
+                if (profile == null) {
+                	profile = new UserProfile();
+                    profile.setLogin(userDTO.getLogin());	
+                }
+                profile.setEmail(userDTO.getEmail());
+                profile.setName(userDTO.getFirstName() + " " + userDTO.getLastName());
+                userProfileRepository.save(profile);
                 return new ResponseEntity<String>(HttpStatus.OK);
             })
             .orElseGet(() -> new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));

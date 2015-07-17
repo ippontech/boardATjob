@@ -1,13 +1,13 @@
 package com.ippon.boardatjob.repository;
 
-import com.ippon.boardatjob.domain.UserProfile;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.ippon.boardatjob.domain.UserProfile;
 
 /**
  * Spring Data JPA repository for the UserProfile entity.
  */
 public interface UserProfileRepository extends JpaRepository<UserProfile,Long> {
 
+	public UserProfile findOneByLogin(String login);
 }

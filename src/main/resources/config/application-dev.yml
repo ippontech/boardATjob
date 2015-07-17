@@ -15,11 +15,12 @@ spring:
     jpa:
         database-platform: org.hibernate.dialect.PostgreSQL82Dialect
         database: POSTGRESQL
-        openInView: false
+        openInView: true
         show_sql: true
         generate-ddl: false
         hibernate:
             ddl-auto: none
+            max_fetch_depth: 2
             naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
         properties:
             hibernate.cache.use_second_level_cache: false

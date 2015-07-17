@@ -110,7 +110,14 @@
                         </p>
                     </div>
                 </div>
-
+				<div class="form-group">
+                    <label translate="register.form.iWantTo">I want to </label>
+                    <select class="form-control" name="roleSelection" ng-model="registerAccount.roleSelection" required>
+                    	<option value=""> -- Choose --</option>
+                    	<option value="ROLE_USER">Find a job</option>
+                    	<option value="ROLE_RECRUITER">Recruit talent</option>       
+                    </select>
+                </div>
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="register.form.button">Register</button>
             </form>
             <p></p>

@@ -4,6 +4,8 @@ import com.codahale.metrics.annotation.Timed;
 import com.ippon.boardatjob.domain.JobApplication;
 import com.ippon.boardatjob.repository.JobApplicationRepository;
 import com.ippon.boardatjob.repository.search.JobApplicationSearchRepository;
+
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -48,6 +51,7 @@ public class JobApplicationResource {
         if (jobApplication.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new jobApplication cannot already have an ID").build();
         }
+        jobApplication.setApplicationDate(DateTime.now());
         jobApplicationRepository.save(jobApplication);
         jobApplicationSearchRepository.save(jobApplication);
         return ResponseEntity.created(new URI("/api/jobApplications/" + jobApplication.getId())).build();
@@ -81,6 +85,18 @@ public class JobApplicationResource {
         log.debug("REST request to get all JobApplications");
         return jobApplicationRepository.findAll();
     }
+    
+    /**
+     * GET  /jobApplications -> get all the jobApplications.
+     */
+    @RequestMapping(value = "/jobApplications/company/{companyId}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<JobApplication> getByCompanyId(@PathVariable Long companyId) {
+        log.debug("REST request to get all JobApplications");
+        return jobApplicationRepository.findAllByCompany(companyId);
+    }
 
     /**
      * GET  /jobApplications/:id -> get the "id" jobApplication.
@@ -92,6 +108,23 @@ public class JobApplicationResource {
     public ResponseEntity<JobApplication> get(@PathVariable Long id) {
         log.debug("REST request to get JobApplication : {}", id);
         return Optional.ofNullable(jobApplicationRepository.findOne(id))
+            .map(jobApplication -> new ResponseEntity<>(
+                jobApplication,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    
+    /**
+     * GET  /jobApplications/:id -> get the "id" jobApplication.
+     */
+    @RequestMapping(value = "/jobApplications/job/{jobid}/login/{login}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<JobApplication> get(@PathVariable Long jobid, @PathVariable String login) {
+        log.debug("REST request to get JobApplication for job: {} and user : {}", jobid, login);
+        return Optional.ofNullable(jobApplicationRepository.findByJobAndUserLogin(jobid, login))
             .map(jobApplication -> new ResponseEntity<>(
                 jobApplication,
                 HttpStatus.OK))

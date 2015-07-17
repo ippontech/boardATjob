@@ -8632,9 +8632,9 @@ h1#logo a {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\0000360}}
 .page-header {
-  padding-bottom: 9px;
+  padding-bottom: 36px;
   margin: 40px 0 20px;
-  border-bottom: 0;
+  border-bottom: 2px outset #EF483D;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\0000366}}
@@ -8659,27 +8659,29 @@ h1#logo a {
   background: #2d2e30 url("../../assets/images/main-bg.png");
   border-top: 3px solid #EF483D;
   position: relative;
+  margin-top: -28px;
   margin-bottom: 40px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\0000389}}
 #splash-with-image {
   min-height: 290px;
   background: #3b3031 url(../../assets/images/main-img-bg.png) no-repeat 50% 63%;
   border-top: 3px solid #EF483D;
   position: relative;
+  margin-top: -28px;
   margin-bottom: 40px;
   padding-top: 33px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003103}}
 .announcement-icon {
   float: left;
   margin-top: 50px;
   margin-left: 100px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003107}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003109}}
 .announcement span {
   font-family: 'Lobster', cursive;
   color: white;
@@ -8692,7 +8694,7 @@ h1#logo a {
   text-align: center;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003121}}
 .well {
   float: left;
   background-color: white;
@@ -8700,71 +8702,71 @@ h1#logo a {
   box-shadow: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003126}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003128}}
 .lead {
   margin-bottom: 8px;
   font-size: 18px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003131}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003133}}
 h2.title {
   margin-top: 0;
   font-size: 24px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003136}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003138}}
 .btn-primary {
   background-color: #EF483D;
   border: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003141}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003143}}
 .btn-primary:hover {
   background-color: #FF584D;
   border: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003146}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003148}}
 .navigation {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003151}}
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
   color: #fff;
   background-color: #EF483D;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003154}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003156}}
 .margintop20 {
   margin-top: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003158}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003160}}
 .nav-pills > li > a {
   border-radius: 4px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003162}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003164}}
 a {
   color: #000;
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003167}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003169}}
 a:hover {
   color: #EF483D;
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003172}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003174}}
 .well h4 {
   margin-top: 0px;
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003177}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003179}}
 .nav-stacked > li + li {
   margin-top: 0px;
   margin-left: 0;
@@ -8774,12 +8776,12 @@ a:hover {
   border: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003186}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003188}}
 .active2 {
   border-left: 4px solid #428bca;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003190}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003192}}
 .pager li > a:focus, .pager li > a:hover {
   text-decoration: none;
   background-color: #fff;
@@ -8787,26 +8789,53 @@ a:hover {
 }
 
 @media (max-width: 992px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003197}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003199}}
   .announcement span {
     float: left;
     text-align: center;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003201}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003203}}
   .announcement-icon {
     float: none;
     margin-top: 50px;
     margin-left: 0px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003206}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003208}}
   .annonceIcon {
     text-align: center;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003209}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003211}}
   .announcement span {
     padding: 30px 0px;
   }
 }
+/* start Password strength bar style */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003218}}
+ul#strength {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  margin-left: 15px;
+  padding: 0;
+  vertical-align: 2px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003227}}
+.point:last {
+  margin: 0 !important;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kniklawski\/Development\/workspace\/boardATjob\/src\/main\/scss\/main\.scss}line{font-family:\00003230}}
+.point {
+  background: #DDD;
+  border-radius: 2px;
+  display: inline-block;
+  height: 5px;
+  margin-right: 1px;
+  width: 20px;
+}
+
+/* end Password strength bar style */

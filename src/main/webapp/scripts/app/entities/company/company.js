@@ -42,5 +42,25 @@ angular.module('boardatjobApp')
                         return $translate.refresh();
                     }]
                 }
+            })
+            .state('mycompany', {
+                parent: 'entity',
+                url: '/mycompany',
+                data: {
+                    roles: ['ROLE_RECRUITER'],
+                    pageTitle: 'boardatjobApp.company.detail.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/company/my-company.html',
+                        controller: 'MyCompanyController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('company');
+                        return $translate.refresh();
+                    }]
+                }
             });
     });

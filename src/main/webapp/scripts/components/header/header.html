@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 id="logo" class="logo">
-                    <a href="">Board@Job</a>
+                    <a ui-sref="home">Board@Job</a>
                 </h1>
             </div>
             <div ng-switch-when="true" class="col-md-6">
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div id="splash-with-image">
+<div id="splash-with-image" ng-show="showBanner()">
     <div class="container">
         <div class="row announcement">
             <div class="col-md-12">

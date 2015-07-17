@@ -10,7 +10,8 @@
                 "question": "Are you sure you want to delete Job {{ id }}?"
             },
             "detail": {
-                "title": "Job"
+                "title": "Job",
+                "apply": "Apply Now!"
             },
             "description": "Description",
             "title": "Title",

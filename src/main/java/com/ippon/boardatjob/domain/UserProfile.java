@@ -1,13 +1,34 @@
 package com.ippon.boardatjob.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.ippon.boardatjob.domain.util.CustomDateTimeDeserializer;
+import com.ippon.boardatjob.domain.util.CustomDateTimeSerializer;
 
 /**
  * A UserProfile.
@@ -21,6 +42,9 @@ public class UserProfile implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "login")
+    private String login;
+    
     @Column(name = "email")
     private String email;
 
@@ -31,13 +55,21 @@ public class UserProfile implements Serializable {
     private String phoneNumber;
 
     @Column(name = "resume")
-    private String resume;
+    @JsonIgnore
+    private byte[] resume;
+
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+    @Column(name = "resume_date")
+    private DateTime resumeDate;
 
     @OneToMany(mappedBy = "userProfile")
     @JsonIgnore
     private Set<JobApplication> jobApplications = new HashSet<>();
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = javax.persistence.CascadeType.ALL)
+    @Cascade(CascadeType.ALL)
     private Company company;
 
     public Long getId() {
@@ -48,7 +80,15 @@ public class UserProfile implements Serializable {
         this.id = id;
     }
 
-    public String getEmail() {
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getEmail() {
         return email;
     }
 
@@ -72,15 +112,23 @@ public class UserProfile implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getResume() {
+    public byte[] getResume() {
         return resume;
     }
 
-    public void setResume(String resume) {
+    public void setResume(byte[] resume) {
         this.resume = resume;
     }
 
-    public Set<JobApplication> getJobApplications() {
+    public DateTime getResumeDate() {
+		return resumeDate;
+	}
+
+	public void setResumeDate(DateTime resumeDate) {
+		this.resumeDate = resumeDate;
+	}
+
+	public Set<JobApplication> getJobApplications() {
         return jobApplications;
     }
 
@@ -125,6 +173,7 @@ public class UserProfile implements Serializable {
                 ", name='" + name + "'" +
                 ", phoneNumber='" + phoneNumber + "'" +
                 ", resume='" + resume + "'" +
+                ", resumeDate='" + resumeDate + "'" +
                 '}';
     }
 }

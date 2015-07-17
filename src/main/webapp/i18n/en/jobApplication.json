@@ -10,11 +10,23 @@
                 "question": "Are you sure you want to delete JobApplication {{ id }}?"
             },
             "detail": {
-                "title": "JobApplication"
+                "title": "JobApplication",
+                "submitApplication": "Submit Application"
             },
-            "coverLetter": "CoverLetter",
-            "job": "job",
-            "userProfile": "userProfile"
+            "apply": {
+                "title": "Apply for ",
+                "submitApplication": "Submit Application"
+            },
+            "coverLetter": "Cover Letter",
+            "job": {
+            	"title": "Job"
+            },
+            "userProfile": {
+            	"title": "User Profile",
+            	"name": "Applicant",
+            	"resume": "Resume",
+            	"date": "Date"
+            }
         }
     }
 }

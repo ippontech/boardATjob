@@ -25,8 +25,22 @@
 
 </div>
 
-<button type="submit" onclick="window.history.back()" class="btn btn-info">
-	<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
-		translate="entity.action.back"> Back</span>
-</button>
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<button type="submit" onclick="window.history.back()" class="btn">
+			<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
+				translate="entity.action.back"> Back</span>
+		</button>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div ng-switch="isJobSeeker()">
+		    <div ng-switch-when="true">
+				<button type="submit" ng-click="apply()" class="btn btn-primary pull-right">
+					<span translate="boardatjobApp.job.detail.apply"> Apply Now!</span>
+					<span class="glyphicon glyphicon-ok"></span>
+				</button>
+			</div>
+		</div>
+	</div>
 </div>
+

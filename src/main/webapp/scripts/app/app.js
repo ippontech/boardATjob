@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale',
-    'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster', 'infinite-scroll'])
+    'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster', 'infinite-scroll','ngFileUpload'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Auth, Principal, Language, ENV, VERSION) {
         $rootScope.ENV = ENV;
@@ -44,6 +44,21 @@ angular.module('boardatjobApp', ['LocalStorageModule', 'tmh.dynamicLocale',
                 $state.go($rootScope.previousStateName, $rootScope.previousStateParams);
             }
         };
+        
+        $rootScope.isRecruiter = function() {
+        	return Principal.isInRole("ROLE_RECRUITER");
+        }
+        $rootScope.isAdmin = function() {
+        	return Principal.isInRole("ROLE_ADMIN");
+        }
+        $rootScope.isJobSeeker = function() {
+        	return !Principal.isInAnyRole(["ROLE_RECRUITER", "ROLE_ADMIN"]);
+        } 
+
+        $rootScope.showBanner = function() {
+        	//console.log($state.current);
+        	return !Principal.isAuthenticated() && $state.current.name == 'home';
+        }
     })
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, $translateProvider, tmhDynamicLocaleProvider, httpRequestInterceptorCacheBusterProvider) {
 

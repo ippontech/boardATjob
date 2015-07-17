@@ -42,5 +42,24 @@ angular.module('boardatjobApp')
                         return $translate.refresh();
                     }]
                 }
+            })
+            .state('jobCreate', {
+                parent: 'entity',
+                url: '/job/create/',
+                data: {
+                    roles: ['ROLE_RECRUITER']
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/job/job-creation.html',
+                        controller: 'JobCreateController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('job');
+                        return $translate.refresh();
+                    }]
+                }
             });
     });

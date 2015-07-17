@@ -2,7 +2,7 @@
 
 angular.module('boardatjobApp')
     .factory('Company', function ($resource) {
-        return $resource('api/companys/:id', {}, {
+        return $resource('api/companys/:id', {id: '@id'}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
@@ -11,6 +11,7 @@ angular.module('boardatjobApp')
                     return data;
                 }
             },
+            
             'update': { method:'PUT' }
         });
     });

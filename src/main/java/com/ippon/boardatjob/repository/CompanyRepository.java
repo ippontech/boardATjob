@@ -1,13 +1,11 @@
 package com.ippon.boardatjob.repository;
 
-import com.ippon.boardatjob.domain.Company;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.ippon.boardatjob.domain.Company;
 
 /**
  * Spring Data JPA repository for the Company entity.
  */
 public interface CompanyRepository extends JpaRepository<Company,Long> {
-
 }

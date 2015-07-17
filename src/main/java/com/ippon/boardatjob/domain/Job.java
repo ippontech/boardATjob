@@ -60,7 +60,7 @@ public class Job implements Serializable {
     private DateTime date;
 
     @ManyToOne
-    @Field( type = FieldType.Nested)
+    @Field(type = FieldType.Nested)
     @Fetch(FetchMode.JOIN)
     private Company company;
 

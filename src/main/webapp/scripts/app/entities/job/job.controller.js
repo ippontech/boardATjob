@@ -9,7 +9,7 @@ angular.module('boardatjobApp')
         $scope.jobapplications = JobApplication.query();
         $scope.page = 1;
         $scope.loadAll = function() {
-            Job.query({page: $scope.page, per_page: 20}, function(result, headers) {
+            Job.query({page: $scope.page, per_page: 5}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
                 for (var i = 0; i < result.length; i++) {
                     $scope.jobs.push(result[i]);
@@ -76,6 +76,10 @@ angular.module('boardatjobApp')
             });
         };
 
+        $scope.isSearchText = function() {
+        	return $scope.searchQuery != null && $scope.searchQuery.length > 0;
+        };
+        
         $scope.refresh = function () {
             $scope.reset();
             $('#saveJobModal').modal('hide');

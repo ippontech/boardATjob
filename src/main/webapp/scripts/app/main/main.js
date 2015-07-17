@@ -15,8 +15,8 @@ angular.module('boardatjobApp')
                         controller: 'MainController'
                     },
                     'applicants@home': {
-                        templateUrl: 'scripts/app/entities/jobApplication/jobApplications.html',
-                        controller: 'JobApplicationController'
+                        templateUrl: 'scripts/app/entities/jobApplication/recruiterJobApplications.html',
+                        controller: 'RecruiterJobApplicationController'
                     },
                     'jobSearch@home': {
                         templateUrl: 'scripts/app/entities/job/jobSearch.html',
@@ -26,6 +26,7 @@ angular.module('boardatjobApp')
                 resolve: {
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('main');
+                        $translatePartialLoader.addPart('jobApplication');
                         return $translate.refresh();
                     }]
                 }

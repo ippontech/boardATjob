@@ -66,6 +66,14 @@
                         <!-- JHipster will add entities to the menu here -->
                     </ul>
                 </li>
+                
+                <li ui-sref-active="active" has-role="ROLE_RECRUITER" ng-switch-when="true">
+                    <a ui-sref="mycompany">
+                        <span class="glyphicon glyphicon-building"></span>
+                        <span translate="global.menu.mycompany">My Company</span>
+                    </a>
+                </li>
+                
                 <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                                 <span>

@@ -20,6 +20,7 @@ spring:
         generate-ddl: false
         hibernate:
             ddl-auto: none
+            max_fetch_depth: 2
             naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
         properties:
             hibernate.cache.use_second_level_cache: false

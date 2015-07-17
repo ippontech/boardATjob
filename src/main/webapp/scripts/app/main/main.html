@@ -1,11 +1,11 @@
 
-<div ng-switch="isAuthenticated()">
+<div ng-switch="isRecruiter()">
     <div ng-switch-when="true">
         <div class="row" has-role="ROLE_RECRUITER" ui-view="applicants"></div>
     </div>
 </div>
-<div ng-switch="isRecruiter">
-    <div ng-switch-when="false">
+<div ng-switch="isJobSeeker()">
+    <div ng-switch-when="true">
         <div class="row" ui-view="jobSearch"></div>
     </div>
 </div>

@@ -128,7 +128,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
                 <tr ng-repeat="job in jobs">
                     <td><a ui-sref="jobDetail({id:job.id})">{{job.id}}</a></td>
                     <td>{{job.description}}</td>

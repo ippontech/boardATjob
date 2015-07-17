@@ -1,28 +1,32 @@
 package com.ippon.boardatjob.service;
 
-import com.ippon.boardatjob.domain.Authority;
-import com.ippon.boardatjob.domain.PersistentToken;
-import com.ippon.boardatjob.domain.User;
-import com.ippon.boardatjob.repository.AuthorityRepository;
-import com.ippon.boardatjob.repository.PersistentTokenRepository;
-import com.ippon.boardatjob.repository.UserRepository;
-import com.ippon.boardatjob.repository.search.UserSearchRepository;
-import com.ippon.boardatjob.security.SecurityUtils;
-import com.ippon.boardatjob.service.util.RandomUtil;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import javax.inject.Inject;
+
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.ippon.boardatjob.domain.Authority;
+import com.ippon.boardatjob.domain.User;
+import com.ippon.boardatjob.repository.AuthorityRepository;
+import com.ippon.boardatjob.repository.PersistentTokenRepository;
+import com.ippon.boardatjob.repository.UserRepository;
+import com.ippon.boardatjob.repository.search.UserSearchRepository;
+import com.ippon.boardatjob.security.AuthoritiesConstants;
+import com.ippon.boardatjob.security.SecurityUtils;
+import com.ippon.boardatjob.service.util.RandomUtil;
 
 /**
  * Service class for managing users.
@@ -92,12 +96,22 @@ public class UserService {
     }
 
     public User createUserInformation(String login, String password, String firstName, String lastName, String email,
-                                      String langKey) {
-
+                                      String langKey, String roleSelection) {
         User newUser = new User();
+        
         Authority authority = authorityRepository.findOne("ROLE_USER");
         Set<Authority> authorities = new HashSet<>();
-        String encryptedPassword = passwordEncoder.encode(password);
+    	List<String> restrictedRoles = Arrays.asList(new String[] {AuthoritiesConstants.ADMIN});
+    	if (roleSelection != null) {
+        	if (restrictedRoles.contains(roleSelection)) {
+        		throw new AuthorizationServiceException("Attempting to set restricted role!");
+        	}
+    		Authority selectedAuthority = authorityRepository.findOne(roleSelection);
+            authorities.add(selectedAuthority);
+            
+    	}
+
+    	String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);

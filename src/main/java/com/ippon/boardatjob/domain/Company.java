@@ -34,9 +34,9 @@ public class Company implements Serializable {
     @JsonIgnore
     private Set<Job> jobs = new HashSet<>();
 
-    @OneToOne(mappedBy = "company")
+    @OneToMany(mappedBy = "company")
     @JsonIgnore
-    private UserProfile userProfile;
+    private Set<UserProfile> userProfiles;
 
     public Long getId() {
         return id;
@@ -78,12 +78,12 @@ public class Company implements Serializable {
         this.jobs = jobs;
     }
 
-    public UserProfile getUserProfile() {
-        return userProfile;
+    public Set<UserProfile> getUserProfiles() {
+        return userProfiles;
     }
 
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
+    public void setUserProfile(Set<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
     }
 
     @Override

@@ -51,6 +51,7 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
             initStaticResourcesProductionFilter(servletContext, disps);
             initGzipFilter(servletContext, disps);
         }
+       
         log.info("Web application fully configured");
     }
 

@@ -1,14 +1,23 @@
 package com.ippon.boardatjob.web.rest;
 
-import com.ippon.boardatjob.Application;
-import com.ippon.boardatjob.domain.UserProfile;
-import com.ippon.boardatjob.repository.UserProfileRepository;
-import com.ippon.boardatjob.repository.search.UserProfileSearchRepository;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -20,13 +29,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.ippon.boardatjob.Application;
+import com.ippon.boardatjob.domain.UserProfile;
+import com.ippon.boardatjob.repository.UserProfileRepository;
+import com.ippon.boardatjob.repository.search.UserProfileSearchRepository;
 
 /**
  * Test class for the UserProfileResource REST controller.
@@ -45,8 +51,8 @@ public class UserProfileResourceTest {
     private static final String UPDATED_NAME = "UPDATED_TEXT";
     private static final String DEFAULT_PHONE_NUMBER = "SAMPLE_TEXT";
     private static final String UPDATED_PHONE_NUMBER = "UPDATED_TEXT";
-    private static final String DEFAULT_RESUME = "SAMPLE_TEXT";
-    private static final String UPDATED_RESUME = "UPDATED_TEXT";
+    private static final byte[] DEFAULT_RESUME = "SAMPLE_TEXT".getBytes();
+    private static final byte[] UPDATED_RESUME = "UPDATED_TEXT".getBytes();
 
     @Inject
     private UserProfileRepository userProfileRepository;

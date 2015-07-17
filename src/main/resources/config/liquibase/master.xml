@@ -9,5 +9,11 @@
     <include file="classpath:config/liquibase/changelog/20150713140425_added_entity_Job.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150713140425_added_entity_UserProfile.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150713140425_added_entity_JobApplication.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150715144300_update_job_field_types.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150715133000_update_userprofile_fields.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150716115000_updates.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150716130000_added_recruiter_role.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150716230000_add_jobapplication_date.xml" relativeToChangelogFile="false"/>
+    
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

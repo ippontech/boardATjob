@@ -31,6 +31,8 @@ public class UserDTO {
     @Size(min = 2, max = 5)
     private String langKey;
 
+    private String roleSelection;
+    
     private List<String> roles;
 
     public UserDTO() {
@@ -71,7 +73,15 @@ public class UserDTO {
         return langKey;
     }
 
-    public List<String> getRoles() {
+    public String getRoleSelection() {
+		return roleSelection;
+	}
+
+	public void setRoleSelection(String roleSelection) {
+		this.roleSelection = roleSelection;
+	}
+
+	public List<String> getRoles() {
         return roles;
     }
 

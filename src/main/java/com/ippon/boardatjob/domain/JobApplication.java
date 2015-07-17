@@ -1,17 +1,29 @@
 package com.ippon.boardatjob.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-import javax.persistence.*;
-
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.ippon.boardatjob.domain.util.CustomDateTimeDeserializer;
+import com.ippon.boardatjob.domain.util.CustomDateTimeSerializer;
 
 /**
  * A JobApplication.
@@ -21,18 +33,27 @@ import java.util.Objects;
 @Document(indexName="jobapplication")
 public class JobApplication implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = -138045489239648154L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "cover_letter")
     private String coverLetter;
 
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+    @Column(name = "application_date")
+    private DateTime applicationDate;
+    
     @ManyToOne
     @Field( type = FieldType.Nested)
     private Job job;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN) 
     @Field( type = FieldType.Nested)
     private UserProfile userProfile;
 
@@ -52,7 +73,15 @@ public class JobApplication implements Serializable {
         this.coverLetter = coverLetter;
     }
 
-    public Job getJob() {
+    public DateTime getApplicationDate() {
+		return applicationDate;
+	}
+
+	public void setApplicationDate(DateTime applicationDate) {
+		this.applicationDate = applicationDate;
+	}
+
+	public Job getJob() {
         return job;
     }
 

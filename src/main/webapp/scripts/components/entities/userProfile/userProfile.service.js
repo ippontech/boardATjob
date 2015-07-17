@@ -11,6 +11,14 @@ angular.module('boardatjobApp')
                     return data;
                 }
             },
+            'getByLogin': {
+            	url: 'api/userProfiles/bylogin/:login',
+            	method: 'GET',
+                transformResponse: function (data) {
+                    data = angular.fromJson(data);
+                    return data;
+                }
+            } ,
             'update': { method:'PUT' }
         });
     });

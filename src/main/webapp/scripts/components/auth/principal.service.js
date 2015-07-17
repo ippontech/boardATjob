@@ -20,7 +20,7 @@ angular.module('boardatjobApp')
                 return _identity.roles.indexOf(role) !== -1;
             },
             isInAnyRole: function (roles) {
-                if (!_authenticated || !_identity.roles) {
+            	if (!_authenticated || !_identity || !_identity.roles) {
                     return false;
                 }
 
@@ -54,8 +54,8 @@ angular.module('boardatjobApp')
                 // retrieve the identity data from the server, update the identity object, and then resolve.
                 Account.get().$promise
                     .then(function (account) {
-                        _identity = account.data;
-                        _authenticated = true;
+                    	_identity = account.data;
+                    	_authenticated = true;
                         deferred.resolve(_identity);
                         Tracker.connect();
                     })
