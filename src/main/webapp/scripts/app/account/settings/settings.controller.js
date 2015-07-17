@@ -32,14 +32,14 @@ angular.module('boardatjobApp')
                         $translate.use($scope.settingsAccount.langKey);
                     }
                 });
-                //console.log('saving profile ', $scope.profile);
-                //UserProfile.update($scope.profile);
+                console.log('saving profile ', $scope.profile);
+                UserProfile.update($scope.profile);
                 // refresh profile
-                UserProfile.getByLogin({login: $scope.settingsAccount.login}, function(result) {
-                	console.log('Here.. refreshed profile: ',result);
-                    $scope.profile = result;
-                    
-                });
+//                UserProfile.getByLogin({login: $scope.settingsAccount.login}, function(result) {
+//                	console.log('Here.. refreshed profile: ',result);
+//                    $scope.profile = result;
+//                    
+//                });
             }).catch(function() {
                 $scope.success = null;
                 $scope.error = 'ERROR';
