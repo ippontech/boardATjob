@@ -1,10 +1,7 @@
 <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
 
-    <div class="alert alert-success" ng-show="success">
-        <strong>Job Saved!</strong>
-    </div>
-
-    <div class="form-group">
+<div class="row">
+    <div class="form-group col-xs-12">
         <label translate="boardatjobApp.job.title">Title</label>
         <input type="text" class="form-control" name="title"
                ng-model="job.title" required>
@@ -16,33 +13,49 @@
             </p>
         </div>
     </div>
-    <div class="form-group">
+</div>
+<div class="row">
+    <div class="form-group col-xs-12">
         <label translate="boardatjobApp.job.location">location</label>
         <input type="text" class="form-control" name="location"
                ng-model="job.location">
     </div>
-    <div class="form-group">
+</div>
+<div class="row">
+    <div class="form-group col-xs-12">
         <label translate="boardatjobApp.job.description">Description</label>
         <textarea type="text" class="form-control" name="description"
                ng-model="job.description"/>
 
     </div>
-    <div class="form-group">
+</div>
+<div class="row">
+    <div class="form-group col-xs-12">
         <label translate="boardatjobApp.job.responsibilities">Responsibilities</label>
         <textarea type="text" class="form-control" name="responsibilities"
                ng-model="job.responsibilities"/>
 
     </div>
-    <div class="form-group">
+</div>
+<div class="row">
+    <div class="form-group col-xs-12">
         <label translate="boardatjobApp.job.requirements">Requirements</label>
         <textarea type="text" class="form-control" name="requirements"
                ng-model="job.requirements"/>
 
     </div>
-    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.history.back()">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+</div>
+<div class="row">
+    <div class="alert alert-success col-xs-12" ng-show="success">
+        <strong>Job Saved!</strong>
+    </div>
+</div>
+<div class="row">
+	<button type="button" class="btn btn-info" onclick="window.history.back()">
+    	<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
     <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary pull-right">
         <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
     </button>
+</div>
 </form>

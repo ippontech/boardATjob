@@ -47,13 +47,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label translate="boardatjobApp.jobApplication.job">job</label>
-                            <select class="form-control" name="job" ng-model="jobApplication.job.id" ng-options="job.id as job.id for job in jobs">
+                            <label translate="boardatjobApp.jobApplication.job.title">job</label>
+                            <select class="form-control" name="job" ng-model="jobApplication.job.id" ng-options="job.id as job.title for job in jobs">
                             </select>
                         </div>
                         <div class="form-group">
-                            <label translate="boardatjobApp.jobApplication.userProfile">userProfile</label>
-                            <select class="form-control" name="userProfile" ng-model="jobApplication.userProfile.id" ng-options="userProfile.id as userProfile.id for userProfile in userprofiles">
+                            <label translate="boardatjobApp.jobApplication.userProfile.title">userProfile</label>
+                            <select class="form-control" name="userProfile" ng-model="jobApplication.userProfile.id" ng-options="userProfile.id as userProfile.name for userProfile in userprofiles">
                             </select>
                         </div>
                     </div>
@@ -101,8 +101,8 @@
                 <tr>
                     <th>ID</th>
                     <th translate="boardatjobApp.jobApplication.coverLetter">CoverLetter</th>
-                    <th translate="boardatjobApp.jobApplication.job">job</th>
-                    <th translate="boardatjobApp.jobApplication.userProfile">userProfile</th>
+                    <th translate="boardatjobApp.jobApplication.job.title">job</th>
+                    <th translate="boardatjobApp.jobApplication.userProfile.title">userProfile</th>
                     <th></th>
                 </tr>
             </thead>
@@ -110,8 +110,8 @@
                 <tr ng-repeat="jobApplication in jobApplications">
                     <td><a ui-sref="jobApplicationDetail({id:jobApplication.id})">{{jobApplication.id}}</a></td>
                     <td>{{jobApplication.coverLetter}}</td>
-                    <td>{{jobApplication.job.id}}</td>
-                    <td>{{jobApplication.userProfile.id}}</td>
+                    <td>{{jobApplication.job.title}}</td>
+                    <td>{{jobApplication.userProfile.name}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="jobApplicationDetail({id:jobApplication.id})"

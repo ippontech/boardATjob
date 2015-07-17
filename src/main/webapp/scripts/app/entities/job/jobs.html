@@ -72,7 +72,7 @@
 
                         <div class="form-group">
                             <label translate="boardatjobApp.job.company">company</label>
-                            <select class="form-control" name="company" ng-model="job.company.id" ng-options="company.id as company.id for company in companys">
+                            <select class="form-control" name="company" ng-model="job.company.id" ng-options="company.id as company.name for company in companys">
                             </select>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                     <th translate="boardatjobApp.job.responsibilities">Responsibilities</th>
                     <th translate="boardatjobApp.job.requirements">Requirements</th>
                     <th translate="boardatjobApp.job.date">Date</th>
-                    <th translate="boardatjobApp.job.company">company</th>
+                    <th translate="boardatjobApp.job.company">Company</th>
                     <th></th>
                 </tr>
             </thead>
@@ -136,7 +136,7 @@
                     <td>{{job.responsibilities}}</td>
                     <td>{{job.requirements}}</td>
                     <td>{{job.date}}</td>
-                    <td>{{job.company.id}}</td>
+                    <td>{{job.company.name}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="jobDetail({id:job.id})"

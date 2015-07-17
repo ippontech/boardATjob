@@ -13,7 +13,7 @@ angular.module('boardatjobApp')
         }
         
         $scope.save = function () {
-            if ($scope.job.id != null) {
+            if ($scope.job && $scope.job.id != null) {
                 Job.update($scope.job,
                     function (res) {
                         $scope.success = 'OK';
@@ -29,14 +29,14 @@ angular.module('boardatjobApp')
                 Job.save($scope.job,	
                     function (res) {
                 		$scope.clear();
-                        $scope.$state.go('home');
+                        $scope.$state.go('recruiterJobs');
                     });
             }
         };
 
         Principal.identity().then(function(account) {
         	UserProfile.getByLogin({login: account.login}, function(result) {
-        		$scope.companyId = result.company.id;
+        		$scope.companyId = result.company ? result.company.id : null;
         		console.log('company id: ' + $scope.companyId);
         	});
         });

@@ -81,7 +81,7 @@ angular.module('boardatjobApp')
 
         
         $scope.showResume = function() {
-        	return $rootScope.isJobSeeker && $scope.profile && $scope.profile.id != null;
+        	return $rootScope.isJobSeeker() && $scope.profile && $scope.profile.id != null;
         };
         
         

@@ -11,7 +11,7 @@ angular.module('boardatjobApp')
         };
         Principal.identity().then(function(account) {
         	UserProfile.getByLogin({login: account.login}, function(result) {
-        		$scope.companyId = result.company.id;
+        		$scope.companyId = result.company ? result.company.id : null;
         		console.log('company id: ' + $scope.companyId);
         		$scope.loadAll();
         	});
