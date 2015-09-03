@@ -1,14 +1,21 @@
-language: java 
+language: java
 jdk:
-    - oraclejdk8
-before_install: 
-    - mvn clean
-    - npm install -g npm
-    - npm install -g bower
-    - gem install compass
+- oraclejdk8
+before_install:
+- mvn clean
+- npm install -g npm
+- npm install -g bower
+- gem install compass
 install: mvn install -Pprod
 notifications:
   webhooks:
-    on_success: change  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: false     # default: false
+    on_success: change
+    on_failure: always
+    on_start: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: XXNxSGuQmlb5KxgNPkZdbUYiYs8YvyURw4M1KsaPMNSEpfPRQo6iz6Wl7VOibU0RcgQgofX1/qp2gspDwkX51+gLcU5EISPbkjFx1o8088ReNhejAOnc/baq0SFpSLCEHzTwIxV7z2TCDZ4Pf+9rmf93gmNp+rRH+Dn9d3Be4RW/ti+48Fd+WUxDiTCtT2jlr1PdP41YkX0+7zJ8ImcvXteNbQykE1BEyTdh35KNWKn2vJQm8pl3mt0+7AclA8V3jVH+67SiOaKfP83bf57Oo1pfAYbxBn9DEFR+TlKMsi7SOW1/3b4xmjDujZ6ZHpRMOAF7FzFQz/mecbRtlrPdnuclb4ZBExsN/0Ok6CoVIz42VWgWMVaEGAqvAmXoYBK7QkibnqYSYUzt+WBl72UGiSLnbQIyVa8I1kUUcDVWU9/htw+V1y7bgGkdZ63JXhPpvYWewsU0Hh5NxIOo01MeZ+znwwyJEJ329L4kKatV9oj2gQMnZuiOymE/SM+mHxiHoLRvYMUfAetwDM96OG5anOW4gfYRjV9OKBv43pdK4fGf/V/sRINsHe9JHwo4wAZZDIE4IHx9KLEvUkM3RL8ePuz//9RsNw7963C7NuRcwOFygte+1KCpW2QrSuU+KEfNycuw9NlqXgeKplrFW5PA7SYTwQQb8gfHz14Gv5SOuS4=
+  app: board-at-job
+  on:
+    repo: ippontech/boardATjob
