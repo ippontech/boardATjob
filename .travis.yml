@@ -5,6 +5,7 @@ before_install:
     - mvn clean
     - npm install -g npm
     - npm install -g bower
+    - gem install compass
 install: mvn install -Pprod
 notifications:
   webhooks:
