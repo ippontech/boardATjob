@@ -31,7 +31,7 @@ spring:
     data:
         elasticsearch:
             cluster-name: elasticsearch
-            cluster-nodes: 71.197.9.107:9300
+            cluster-nodes: 73.148.65.44:9300
     thymeleaf:
         mode: XHTML
         cache: true
